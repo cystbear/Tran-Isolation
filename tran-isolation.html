@@ -1,0 +1,2090 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+
+<title>Технологические вопросы крупных внедрений</title>
+<link href="./tran-isolation/style.css" rel="stylesheet" type="text/css">
+<link href="./tran-isolation/style2.css" rel="stylesheet" type="text/css">
+<link href="./tran-isolation/content.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.style2 {
+	color: #FF0000;
+	font-size: 10px;
+}
+.style1 {
+	color: #FFFFFF;
+	font-weight: bold;
+}
+.style3 {
+	color: #C10000;
+	font-weight: bold;
+	line-height: 30px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+}
+
+h3.base01 {color:#601000}
+
+body {
+    margin: 0px;
+}
+
+-->
+</style>
+<style type="text/css"></style><style type="text/css">#lleo_dialog, #lleo_dialog * {
+    margin: 0 !important;
+	padding: 0 !important;
+	background: none !important;
+	border: none 0 !important;
+	position: static !important;
+	vertical-align: baseline !important;
+	font: normal 13px Arial, Helvetica !important;
+	line-height: 15px !important;
+	color: #000 !important;
+	overflow: visible !important;
+	width: auto !important;
+	height: auto !important;
+	float: none !important;
+	visibility: visible !important;
+	text-align: left !important;
+	border-collapse: separate !important;
+	border-spacing: 2px !important;
+}
+
+#lleo_dialog iframe {
+	height: 0 !important;
+	width: 0 !important;
+}
+
+#lleo_dialog {
+    position: absolute !important;
+    background: #fff !important;
+    border: solid 1px #ccc !important;
+    padding: 7px 0 0 !important;
+    left: -999px;
+    top: -999px;
+	/*max-width: 450px !important;*/
+    width: 440px !important;
+    overflow: hidden;
+    display: block !important;
+    z-index: 999999999 !important;
+    opacity: 0 !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18) !important;
+	-moz-border-radius: 3px !important;
+	-webkit-border-radius: 3px !important;
+	border-radius: 3px !important;
+}
+#lleo_dialog.lleo_show {
+    opacity: 1 !important;
+    -webkit-transition: opacity 0.3s !important;
+}
+#lleo_dialog input::-webkit-input-placeholder {
+    color: #aaa !important;
+}
+#lleo_dialog .lleo_has_pic #lleo_word {
+	margin-right: 80px !important;
+}
+#lleo_dialog #lleo_translationsCopntainer1 {
+	position: relative !important;
+}
+#lleo_dialog #lleo_translationsCopntainer2 {
+	padding: 7px 0 0 !important;
+	vertical-align: middle !important;
+}
+#lleo_dialog #lleo_word {
+    color: #000 !important;
+    margin: 0 5px 2px 0 !important;
+    /*float: left !important;*/
+}
+#lleo_dialog .lleo_has_sound #lleo_word {
+    margin-left: 17px !important;
+}
+#lleo_dialog #lleo_text {
+    font-weight: bold !important;
+    color: #d56e00 !important;
+    text-decoration: none !important;
+    cursor: default !important;
+}
+#lleo_dialog #lleo_text.lleo_known {
+    cursor: pointer !important;
+    text-decoration: underline !important;
+}
+#lleo_dialog #lleo_closeBtn {
+    position: absolute !important;
+    right: 6px !important;
+    top: 5px !important;
+    line-height: 1px !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+    font-size: 0 !important;
+    color: #aaa !important;
+    display: block !important;
+    padding: 2px !important;
+	z-index: 9999999999 !important;
+	width: 7px !important;
+	height: 7px !important;
+	padding: 0  !important;
+	margin: 0   !important;
+}
+
+#lleo_dialog #lleo_optionsBtn {
+    position: absolute !important;
+    right: 1px !important;
+    top: 12px !important;
+    line-height: 1px !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+    font-size: 13px !important;
+    color: #aaa !important;
+    padding: 2px !important;
+	display: none;
+}
+#lleo_dialog #lleo_optionsBtn img{
+	width: 12px !important;
+	height: 12px !important;
+}
+#lleo_dialog #lleo_sound {
+    float: left !important;
+    width: 16px !important;
+    height: 16px !important;
+    margin-left: 12px !important;
+    background: 0 0 no-repeat !important;
+    cursor: pointer !important;
+    display: none !important;
+}
+#lleo_dialog .lleo_has_sound #lleo_sound {
+    display: block !important;
+}
+#lleo_dialog #lleo_picOuter {
+    position: absolute !important;
+    float: right !important;
+    right: 29px;
+    top: 0;
+    display: none !important;
+    z-index: 9 !important;
+}
+#lleo_dialog .lleo_has_pic #lleo_picOuter {
+    display: block !important;
+}
+#lleo_dialog #lleo_picOuter:hover {
+    z-index: 11 !important;
+}
+#lleo_dialog #lleo_pic,
+#lleo_dialog #lleo_picBig {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    border: solid 2px #fff !important;
+    -moz-border-radius: 2px !important;
+	-webkit-border-radius: 2px !important;
+	border-radius: 2px !important;
+    z-index: 1 !important;
+}
+#lleo_dialog #lleo_pic {
+	position: relative !important;
+    border: none !important;
+	width: 34px !important;
+}
+#lleo_dialog #lleo_picBig {
+    box-shadow: -1px 2px 4px rgba(0,0,0,0.3);
+    z-index: 2 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+#lleo_dialog #lleo_picOuter:hover #lleo_picBig {
+    visibility: visible !important;
+    opacity: 1 !important;
+    -webkit-transition: opacity 0.3s !important;
+    -webkit-transition-delay: 0.3s !important;
+}
+#lleo_dialog #lleo_transcription {
+    color: #486D85 !important;
+    margin: 0 0 4px 29px !important;
+    color: #aaaaaa !important;
+}
+#lleo_dialog .lleo_no_trans {
+    color: #aaa !important;
+}
+
+
+
+
+
+
+#lleo_dialog .ll-translation-counter {
+	float: right !important;
+    font-size: 11px !important;
+    color: #aaa !important;
+    padding: 2px 2px 1px 10px !important;
+}
+
+#lleo_dialog .ll-translation-text {
+	float: left !important;
+	width: 80% !important;
+}
+
+#lleo_dialog #lleo_trans a {
+    color: #3F669F !important;
+    padding: 1px 4px !important;
+    text-decoration: none !important;
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+}
+
+#lleo_dialog .ll-translation-item {
+	width: 100% !important;
+	float: left !important;
+	padding:1px 4px;
+	color: #3F669F !important;
+	padding: 3px !important;
+	border: solid 1px white !important;
+	-moz-border-radius: 2px !important;
+	-webkit-border-radius: 2px !important;
+	border-radius: 2px !important;
+}
+
+#lleo_dialog .ll-translation-item:hover {
+	border: solid 1px #9FC2C9 !important;
+    background: #EDF4F6 !important;
+	cursor: pointer !important;
+}
+
+#lleo_dialog .ll-translation-marker {
+	margin: 0px 5px 2px 2px !important;
+}
+
+
+
+
+
+#lleo_dialog #lleo_icons {
+    margin: 10px 0 7px !important;
+    color: #aaa !important;
+    line-height: 20px !important;
+    font-size: 11px !important;
+    clear: both !important;
+    padding-left: 16px !important;
+}
+#lleo_icons a {
+    display: inline-block !important;
+    width: 16px !important;
+    height: 16px !important;
+    margin: 0 0 -2px 3px !important;
+    text-decoration: none !important;
+    background: 0 0 no-repeat !important;
+    opacity: 0.5 !important;
+}
+#lleo_icons a:hover {
+    opacity: 1 !important;
+}
+#lleo_icons a.lleo_google     {background-position:-34px 0 !important;}
+#lleo_icons a.lleo_multitran  {background-position:-64px 0 !important;}
+#lleo_icons a.lleo_lingvo     {background-position:-51px 0 !important; width: 12px !important;}
+#lleo_icons a.lleo_dict       {background-position:-17px 0 !important;}
+#lleo_icons a.lleo_linguee    {background-position:-81px 0 !important;}
+#lleo_icons a.lleo_michaelis  {background-position:-98px 0 !important;}
+
+
+
+
+#lleo_dialog #lleo_contextContainer {
+    margin: 0 !important;
+    padding: 3px 15px 3px 10px !important;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee)) !important;
+    border-bottom: solid 1px #ddd !important;
+    border-top-left-radius: 3px !important;
+    border-top-right-radius: 3px !important;
+    display: none !important;
+    overflow: hidden !important;
+}
+#lleo_dialog .lleo_has_context #lleo_contextContainer {
+    display: block !important;
+}
+#lleo_dialog #lleo_context {
+    color: #444 !important;
+    text-shadow: 1px 1px 0 #f4f4f4 !important;
+    line-height: 12px !important;
+    font-size: 11px !important;
+    margin-left: 2px !important;
+}
+#lleo_dialog #lleo_context b {
+    line-height: 12px !important;
+    color: #000 !important;
+    font-weight: bold !important;
+    font-size: 11px !important;
+}
+#lleo_dialog #lleo_gBrand {
+    color: #aaa !important;
+    font-size: 10px !important;
+    /*padding-right: 52px !important;*/
+    padding-bottom: 14px !important;
+    margin: -3px 4px 0 4px !important;
+    background: left bottom no-repeat !important;
+    display: inline-block !important;
+    float: right !important;
+}
+#lleo_dialog #lleo_gBrand.hidden {
+    display: none !important;
+}
+#lleo_dialog #lleo_translateContextLink {
+    color: #444 !important;
+    text-shadow: 1px 1px 0 #f4f4f4 !important;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f4f4f4), to(#ddd)) !important;
+    border: solid 1px !important;
+    box-shadow: 1px 1px 0 #f6f6f6 !important;
+    border-color: #999 #aaa #aaa #999 !important;
+    -moz-border-radius: 2px !important;
+	-webkit-border-radius: 2px !important;
+	border-radius: 2px !important;
+    padding: 0 3px !important;
+    font-size: 11px !important;
+    text-decoration: none !important;
+    margin: 1px 5px 0 !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
+}
+#lleo_dialog #lleo_translateContextLink:hover {
+    background: #f8f8f8 !important;
+}
+
+#lleo_dialog #lleo_setTransForm {
+    display: block !important;
+    margin-top: 3px !important;
+    padding-top: 5px !important;
+    /* Set position and background because the form might be overlapped by an image when no translations */
+    position: relative !important;
+    background: #fff !important;
+    z-index: 10 !important;
+    padding-bottom: 10px !important;
+    padding-left: 16px !important;
+}
+#lleo_dialog .lleo-custom-translation {
+    padding: 4px 5px !important;
+    border: solid 1px #ddd !important;
+    -moz-border-radius: 2px !important;
+	-webkit-border-radius: 2px !important;
+	border-radius: 2px !important;
+    width: 90% !important;
+    min-width: 270px !important;
+    background: -webkit-gradient(linear, 0 0, 0 20, from(#f1f1f1), to(#fff)) !important;
+	font: normal 13px Arial, Helvetica !important;
+	line-height: 15px !important;
+}
+#lleo_dialog .lleo-custom-translation:hover {
+    border: solid 1px #aaa !important;
+}
+#lleo_dialog .lleo-custom-translation:focus {
+    background: #FFFEC9 !important;
+}
+
+#lleo_dialog *.hidden {
+    display: none !important;
+}
+
+#lleo_dialog .infinitive{
+    color: #D56E00 !important;
+    text-decoration: none;
+    border-bottom: 1px dotted #D56E00 !important;
+}
+#lleo_dialog .infinitive:hover{
+    border: none !important;
+}
+
+
+#lleo_dialog #lleo_trans{
+    zoom: 1;
+    border-top: 1px solid #eeeeee !important;
+    margin: 10px 0 0 !important;
+    padding: 5px 30px 0 14px !important;
+}
+
+#lleo_dialog .lleo_clearfix {
+	display: block !important;
+	clear: both !important;
+	visibility: hidden !important;
+	height: 0 !important;
+	font-size: 0 !important;
+}
+
+#lleo_dialog #lleo_markBlock {
+    background: #eeeeee !important;
+	cursor: pointer !important;
+	border-bottom-left-radius: 3px !important;
+	border-bottom-right-radius: 3px !important;
+	border-collapse: separate !important;
+	border-spacing: 2px !important;
+}
+
+#lleo_dialog #lleo_markBlock img{
+	width: 14px !important;
+	height: 14px !important;
+}
+
+#lleo_dialog #lleo_markBlock .icon-cell {
+	padding: 5px 2px 5px 16px !important;
+	height: 17px !important;
+}
+
+#lleo_dialog #lleo_markBlock .wide-cell {
+	width: 100% !important;
+}
+
+#lleo_dialog #lleo_markBlock .text-cell {
+	color: #999999 !important;
+    font: normal 13px Arial, Helvetica !important;
+    text-shadow: 0 1px #fff !important;
+}
+
+#lleo_dialog #lleo_markBlock td {
+	vertical-align: middle !important;
+	border-collapse: separate !important;
+	border-spacing: 2px !important;
+}
+
+
+#lleo_dialog #lleo_picOuter table{
+    width: 44px !important;
+    position: absolute !important;
+    right: 0 !important;
+    vertical-align: middle !important;
+}
+
+#lleo_dialog #lleo_picOuter td{
+    width: 38px !important;
+    height: 38px !important;
+    border: 1px solid #eeeeee !important;
+    vertical-align: middle !important;
+    text-align: center !important;
+}
+
+#lleo_dialog #lleo_picOuter td div {
+	height: 38px !important;
+	overflow: hidden !important;
+}</style><style type="text/css">
+.ll-content-notification *{
+	letter-spacing: normal !important;
+	margin: 0 !important;
+    padding: 0 !important;
+	background: none !important;
+	border: 0 !important;
+	float: none !important;
+	text-align: left !important;
+	text-decoration: none !important;
+    font: normal 15px 'Lucida Grande', 'Lucida Sans Unicode', Lucida, Arial, Helvetica, sans-serif !important;
+}
+
+
+.ll-content-notification {
+    vertical-align: baseline !important;
+    color: #000 !important;
+    overflow: visible !important;
+    visibility: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: fixed !important;
+    background: #fff !important;
+    border: solid 1px #AAA !important;
+	/*
+    left: -999px;
+    top: -999px;
+	*/
+    width: auto;
+    /* width: 300px !important; */
+    display: block;
+    z-index: 999999999 !important;
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18) !important;
+    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18) !important;
+    -webkit-border-radius: 3px !important;
+    -moz-border-radius: 3px !important;
+    border-radius: 3px !important;
+    overflow: hidden !important;
+    /* opacity: 0 !important; */
+    transition: opacity 0.8s !important;
+    -moz-transition: opacity 0.8s !important; /* Firefox 4 */
+    -webkit-transition: opacity 0.8s !important; /* Safari and Chrome */
+    -o-transition: opacity 0.8s !important; /* Opera */
+    cursor: default !important;
+}
+
+.ll-content-notification-shown {
+    opacity: 1 !important;
+    transition: opacity 0.8s !important;
+    -moz-transition: opacity 0.8s !important; /* Firefox 4 */
+    -webkit-transition: opacity 0.8s !important; /* Safari and Chrome */
+    -o-transition: opacity 0.8s !important; /* Opera */
+}
+
+.ll-content-notification-header {
+	border: 0 !important;
+	margin: 0 !important;
+    background: url(data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAABCAIAAABsYngUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjEwMPRyoQAAABJJREFUGFdjePHmCxw9e/UZjgAVYhYtk8xZqAAAAABJRU5ErkJggg==) !important;
+    border-bottom: solid 1px #CCC !important;
+    padding: 1px 4px !important;
+	min-height: 18px !important;
+	width: 100% !important;
+	-webkit-border-top-left-radius: 3px !important;
+    -webkit-border-top-right-radius: 3px !important;
+    -moz-border-radius-topleft: 3px !important;
+    -moz-border-radius-topright: 3px !important;
+    border-top-left-radius: 3px !important;
+    border-top-right-radius: 3px !important;
+	border-collapse: collapse !important;
+	border-spacing: 0 !important;
+}
+
+.ll-content-notification-header-pic {
+	border: 0 !important;
+	margin: 0 !important;
+	padding: 3px 0 0 3px !important;
+	width: 20px !important;
+	vertical-align: top !important;
+	line-height: 1px !important;
+}
+
+.ll-content-notification-header-pic img{
+	border: 0 !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	line-height: 1px !important;
+}
+
+
+.ll-content-notification-header-caption {
+    font: normal 13px 'Lucida Grande', 'Lucida Sans Unicode', Lucida, Arial, Helvetica, sans-serif !important;
+	font-weight: bold !important;
+    line-height: 15px !important;
+    color: #555 !important;
+    float: left !important;
+    text-shadow: none !important;
+    letter-spacing: normal !important;
+	white-space: normal !important;
+	padding: 3px !important;
+	margin: 0 !important;
+}
+
+.ll-content-notification-header-close {
+    width: 15px !important;
+	vertical-align: top !important;
+	text-align: right !important;
+	padding: 6px 5px 0 0 !important;
+	margin: 0 !important;
+	line-height: 1px !important;
+}
+
+.ll-content-notification-header-close img {
+	border: 0 !important;
+    width: 7px !important;
+    height: 7px !important;
+    margin: 0 !important;
+	padding: 0 !important;
+}
+
+.ll-content-notification-content {
+    margin: 0 !important;
+    padding: 8px !important;
+    float: left !important;
+    overflow: hidden !important;
+    width: auto !important;
+}
+
+.ll-content-notification-content-logo {
+    float: left !important;
+	height: 48px !important;
+	width: 48px !important;
+}
+
+.ll-content-notification-content-main {
+    margin-left: 60px !important;
+    overflow: hidden !important;
+    padding: 0 0 2px 0 !important;
+    color: #333 !important;
+    text-align: left !important;
+    text-shadow: none !important;
+    letter-spacing: normal !important;
+    font: normal 13px 'Lucida Grande', 'Lucida Sans Unicode', Lucida, Arial, Helvetica, sans-serif !important;
+    line-height: 15px !important;
+    width: auto !important;
+}
+
+.ll-content-notification-content-header {
+	text-align: left !important;
+	text-decoration: none !important;
+    font: bold 15px 'Lucida Grande', 'Lucida Sans Unicode', Lucida, Arial, Helvetica, sans-serif !important;
+    line-height: 19px !important;
+    margin: 0 0 4px 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    color: #333 !important;
+    text-shadow: none !important;
+    letter-spacing: normal !important;
+    display: block !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+.ll-content-notification-word {
+    color: #d56e00 !important;
+    font-weight: bold !important;
+    font-size: 14px !important;
+}
+</style></head>
+
+
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<script src="./tran-isolation/formatMess.js" type="text/javascript"></script>
+
+<p></p>
+
+<h1>
+	<img src="./tran-isolation/book_open.gif" width="16" height="16" alt="" border="0">
+	Блокировки данных в 1С:Предприятии 8
+</h1>
+<h3>Автор: Белоусов Павел (Альтер Лого, Москва)</h3>
+
+<div class="bord">
+	<h3 style="border-bottom: dashed 1px #dcdcdc; color:#696969; margin-top: 0px;">Краткое содержание:</h3>
+	1. Что такое блокировка данных и зачем она нужна<br>2. Объектные блокировки<br>3. Транзакционные блокировки<br>4. Автоматические транзакционные блокировки<br>5. Управляемые транзакционные блокировки<br>6. Перевод конфигурации в режим управляемых блокировок
+</div>
+
+<div class="bord" id="copytextbody">
+	<br>
+<div align="right">
+<address>
+Данная статья является фрагментом книги П.С.Белоусов, А.В.Островерх "1С:Предприятие: от 8.0 к 8.1".<br>
+Дата выхода книги: ноябрь 2007.<span></span></address>
+</div>
+<h1 align="center">Блокировки данных в 1С:Предприятии 8</h1>
+<p>
+При одновременной работе нескольких пользователей с одной и той же информационной базой периодически возникают ситуации, когда два или более пользователей пытаются не только одновременно прочитать одни те же данные, но и внести в них какие-то изменения. Очевидно, что если в таких случаях не предусмотреть возможности подключения специальных механизмов системы, то могут возникнуть проблемы, связанные с целостностью и достоверностью данных, хранимых в информационной базе.
+</p>
+<br>
+<p>
+Описанию возникающих проблем, а также путей их решения в системе 1С:Предприятия 8.1 и посвящена данная статья.
+</p>
+<h2 align="center">Что такое блокировка </h2>
+<p>
+Прежде чем начать изучение механизмов 1С:Предприятия, обеспечивающих конкурентный доступ пользователей к данным, познакомимся с тем, что такое блокировки, когда они возникают и можно ли обойтись без блокировок.
+</p>
+<br>
+<p>
+В общем случае <span class="style4"><em><font color="#ff6600">блокировка</font></em></span> - это информация о том, что данный ресурс захвачен «кем-то», для выполнения какого-то действия.
+</p>
+<br>
+<p>
+Рассмотрим простой пример. Продавец продает яблоки. Так получилось, что продавец очень рассеян и ему приходится абсолютно все записывать. По этой же причине все яблоки у него пронумерованны.
+</p>
+<br>
+<p>
+Пришел покупатель Иванов и ему понравилось яблоко №4. Он хочет его купить. Иванов достает кошелек и отсчитывает деньги (рис. 1).
+</p>
+<br>
+<div style="text-align: center">
+<img src="./tran-isolation/pic_01.jpg" alt="Рис. 1. Иванов хочет купить яблоко №4" title="Рис. 1. Иванов хочет купить яблоко №4" width="575" height="355">
+</div>
+<p align="center">
+<span class="style9"><strong><font color="#993366">Рис. 1.</font></strong></span> Иванов хочет купить яблоко №4
+</p>
+<p align="center">
+&nbsp;
+</p>
+<p>
+Тем временем, продавец делает запись в своей книге: «Яблоко №4 - продано Иванову». Эта запись и есть блокировка (рис. 2).&nbsp;
+</p>
+<br>
+<div style="text-align: center">
+<img src="./tran-isolation/pic_02.jpg" alt="Рис. 2. Продавец «заблокировал» яблоко №4" title="Рис. 2. Продавец «заблокировал» яблоко №4" width="575" height="355">
+</div>
+<p align="center">
+<span class="style9"><font color="#993366"><strong>Рис. 2.</strong></font></span> Продавец «заблокировал» яблоко №4
+</p>
+<p align="center">
+&nbsp;
+</p>
+<p>
+Обратите внимание, что на самом деле яблоко все еще находится у продавца, Иванов его не купил. Может быть и не сможет купить (например окажется, что не хватает денег). Но у продавца уже записано, что это яблоко нельзя предлагать другим покупателям до тех пор, пока Иванов не завершит процесс покупки. Этот процесс, состоящий из нескольких взаимосвязанных действий (выбор яблока, отсчитывание денег, передача денег продавцу, передача яблока покупателю) называется транзакцией. Блокировка должна быть установлена в момент выбора Ивановым яблока №4 и снята после завершения транзакции покупки.
+</p>
+<br>
+<p>
+Тем временем подходит Петров и тоже хочет купить яблоко. Он сможет купить любое яблоко, кроме яблока №4 (рис. 3).
+</p>
+<br>
+<p style="text-align: center">
+<img src="./tran-isolation/pic_03.jpg" alt="Рис. 3. Петров сможет купить любое яблоко, кроме яблока №4" title="Рис. 3. Петров сможет купить любое яблоко, кроме яблока №4" width="575" height="355">
+</p>
+<p align="center">
+<span class="style9"><font color="#993366"><strong>Рис. 3.</strong></font></span> Петров сможет купить любое яблоко, кроме яблока №4
+</p>
+<br>
+<p>
+Таким образом смысл блокировки с том, чтобы запретить некоторые действия над общим ресурсом на некоторое ограниченное время. В данном случае Петрову запрещено выбирать яблоко №4 до тех пор, пока Иванов не завершил свою транзакцию покупки. То есть, Петров находится в состоянии ожидания на блокировке.
+</p>
+<br>
+<p>
+Из приведенного примера понятно, что блокировки - это необходимый механизм при конкурентном доступе к общим ресурсам. В самом деле, что бы было, если бы продавец не записал в своей книге, что яблоко из четвертой ячейки нельзя предлагать другим покупателям? Скорее всего произошел бы конфликт между Ивановым и Петровым, возможно при этом «досталось» бы и продавцу. В любом случае, если запись в книге продавца отсутствует, исход данной ситуации становится непредсказуемым. Неизвестно, кому достанется это яблоко, неизвестно у кого окажутся деньги, которые Иванов за него отдал и так далее.
+</p>
+<br>
+<p>
+Если же блокировка на яблоко №4 установлена, то это гарантирует однозначный исход: Иванов гарантированно сможет купить яблоко, если у него хватит денег. Если же он откажется от покупки, то только в этом случае яблоко из 4 ячейки сможет купить Петров.
+</p>
+<br>
+<p>
+Следует понимать, что в силу различных причин блокировки могут быть как «хорошими» (необходимыми), так и «плохими» (избыточными).
+</p>
+<br>
+<p>
+Рассмотрим еще один вариант развития событий, который поясняет откуда берутся «плохие» блокировки.
+</p>
+<br>
+<p>
+Покупатель Иванов хочет купить одно яблоко. Он перебирает все яблоки из ящика по одному, выбирая, какое лучше. При этом продавец записывает в своей книге все яблоки, которые понравились Иванову (рис. 4).
+</p>
+<br>
+<div style="text-align: center">
+<img src="./tran-isolation/pic_04.jpg" alt="Рис. 4. Продавец блокирует все яблоки, которые нравятся Иванову" title="Рис. 4. Продавец блокирует все яблоки, которые нравятся Иванову" width="575" height="355">
+</div>
+<p align="center">
+<span class="style9"><strong><font color="#993366">Рис. 4.</font></strong></span> Продавец блокирует все яблоки, которые нравятся Иванову
+</p>
+<br>
+<p>
+В это время подходит Петров и не может купить ни одного яблока, потому что они все заблокированы Ивановым (рис. 5).
+</p>
+<br>
+<p style="text-align: center">
+<img src="./tran-isolation/pic_05.jpg" alt="Рис. 5. Петров не может купить ни одного яблока" title="Рис. 5. Петров не может купить ни одного яблока" width="575" height="355">
+</p>
+<p align="center">
+<span class="style9"><strong><font color="#993366">Рис. 5.</font></strong></span> Петров не может купить ни одного яблока
+</p>
+<br>
+<p>
+Петров ждет некоторое время, обижается и уходит (рис. 6). Это событие соответствует ошибке "Превышение времени ожидания блокировки".
+</p>
+<br>
+<p style="text-align: center">
+<img src="./tran-isolation/pic_04.jpg" alt="Рис. 6. Петров не дождался и ушел" title="Рис. 6. Петров не дождался и ушел" width="575" height="355">
+</p>
+<p align="center">
+<span class="style9"><font color="#993366"><strong>Рис. 6.</strong></font> </span>Петров не дождался и ушел
+</p>
+<br>
+<p>
+А Иванов, в результате, выбирает одно единственное яблоко (самое лучшее) и покупает только его (рис. 7).
+</p>
+<br>
+<p style="text-align: center">
+<img src="./tran-isolation/pic_06.jpg" alt="Рис. 7. Иванов покупает только одно яблоко" title="Рис. 7. Иванов покупает только одно яблоко" width="575" height="355">
+</p>
+<p align="center">
+<span class="style9"><font color="#993366"><strong>Рис. 7.</strong></font></span> Иванов покупает только одно яблоко
+</p>
+<br>
+<p>
+Таким образом все остальные яблоки были заблокированы зря. Если бы этих блокировок не было, то Петров, возможно, тоже купил бы яблоко.
+</p>
+<br>
+<p>
+В данном случае (в отличие от первого примера) Петров как раз столкнулся с «плохими» (избыточными) блокировками.
+</p>
+<br>
+<p>
+Подводя итог сказанному важно отметить, что «хорошие» блокировки обязательно должны присутствовать в прикладном решении. Именно благодаря им обеспечивается предсказуемость действий пользователей, целостность и непротиворечивость данных.
+</p>
+<br>
+<p>
+С «плохими» блокировками нужно бороться и в идеале их не должно существовать в прикладном решении. Причины возникновения плохих блокировок могут быть самыми разнообразными: прикладная логика, особенности работы той или иной СУБД и т.д. В данной статье мы познакомимся лишь с механизмами системы 1С:Предприятие 8.1, которые используют блокировки и дадим рекомендации по правильному их использованию. Тема же анализа существующих блокировок и их оптимизации достаточно сложная и объемная, и выходит за рамки данной статьи.
+</p>
+<h2 align="center">Объектные и транзакционные блокировки</h2>
+<p>
+В системе 1С:Предприятие 8 существуют два механизма, при работе которых используется термин блокировка. Зачастую это приводит к путанице и позволяет думать, что речь идет об одних и тех же блокировках или об одном и том же механизме. На самом деле это не так. Каждый из этих механизмов предназначен для обеспечения конкуретной работы пользователей, однако в своей, определенной области, и при этом блокировки, используемые одним и другим механизмами, имеют совершенно различный смысл (рис. 8).
+</p>
+<br>
+<p style="text-align: center">
+<img src="./tran-isolation/ch03_008.png" alt="Рис. 3.8. Объектные и транзакционные блокировки" title="Рис. 3.8. Объектные и транзакционные блокировки" width="690" height="571">
+</p>
+<p align="center">
+<span class="style9"><strong><font color="#993366">Рис. 8.</font></strong></span> Объектные и транзакционные блокировки
+</p>
+<br>
+<p>
+Логическая модель данных 1С:Предприятия 8 предполагает, что на самом «верхнем» уровне абстрации пользователь имеет дело с объектами системы, как совокупностью неделимых данных. Такими объектами, например, являются элементы справочников, документы и др. Элемент справочника может содержать большое количество реквизитов, несколько табличных частей, но все эти данные необходимо изменять одновременно и согласованно. <span class="style4"><em><font color="#ff6600">Механизм объектных блокировок</font></em></span> как раз и позволяет осуществлять конкурентный доступ пользователей к данным 1С:Предприятия в терминах объектов информационной базы. Как правило в большинстве случаев это связано с интерактивной работой пользователей в формах: редактирование существующих объектов, удаление, создание новых и др.
+</p>
+<br>
+<p>
+В то же время все данные информационной базы хранятся в некоторой СУБД. А любая СУБД должна обеспечивать целостность и непротиворечивость хранимых данных. Для согласованного изменения данных в СУБД используется механизм транзакций, а для обеспечения конкурентного доступа к данным - <span class="style4"><font color="#ff6600"><em>механизм транзакционных блокировок</em></font></span>.
+</p>
+<br>
+<p>
+Таким образом и тот, и другой механизмы обеспечивают конкурентную работу пользователей, однако области их действия и смысл устанавливаемых блокировок являются совершенно разными.
+</p>
+<br>
+<p>
+Далее рассмотрим работу этих двух механизмов более подробно.
+</p>
+<br>
+<h2 align="center">Механизм объектных блокировок</h2>
+<h3 align="center">Объектная пессимистическая блокировка</h3>
+<p align="left">
+Пессимистическая блокировка объектов базы данных предназначена для того, чтобы запретить изменение данных определенного объекта другими сеансами или данным сеансом до тех пор, пока блокировка не будет снята этим объектом встроенного языка.
+</p>
+<br>
+<p>
+В основном механизм пессимистической блокировки используется системой 1С:Предприятие 8.1 для блокировки объектов, редактируемых в форме. В тот момент, когда пользователь начинает модификацию объекта в форме, расширение формы устанавливает пессимистическую блокировку. Если после этого другой пользователь, например, попытается выполнить редактирование того же объекта, ему будет выдано сообщение о том, что не удалось заблокировать объект. Когда пользователь, редактировавший объект, закроет форму объекта, расширение формы снимет пессимистическую блокировку.
+</p>
+<br>
+<p>
+Рассмотрим пример. Войдем в прилагаемую к работе информационную базу под пользователем <span class="style6"><font color="#0000ff">Иванов</font></span>, откроем форму элемента <span class="style6"><font color="#0000ff">1С:Предприятие 8.0. Управление торговлей</font></span> справочника <span class="style6"><font color="#0000ff">Номенклатура</font></span> (код 12) и изменим цену продажи с <span class="style6"><font color="#0000ff">420,00</font></span> на <span class="style6"><font color="#0000ff">450,00</font></span>. <span class="style9"><strong><font color="#993366">Не сохраняя сделанные изменения</font></strong></span>, войдем в информационную базу еще раз, но теперь под именем пользователя <span class="style6"><font color="#0000ff">Петров</font></span>. Откроем форму того же элемента справочника и попробуем изменить значение какого-либо реквизита. Любая попытка изменения приведет к появлению специального окна с сообщением об ошибке (рис. 9):
+</p>
+<br>
+<p style="text-align: center">
+<img src="./tran-isolation/ch03_009.png" alt="Рис. 3.9. Пример работы пессимистической блокировки" title="Рис. 3.9. Пример работы пессимистической блокировки" width="740" height="263">
+</p>
+<p align="center">
+<span class="style9"><strong><font color="#993366">Рис. 9.</font></strong></span> Пример работы пессимистической блокировки
+</p>
+<br>
+<p>
+Таким образом пессимистическая блокировка гарантирует, что пользователь, начав изменять данные объекта, сможет записать эти изменения в информационную базу.
+</p>
+<br>
+<p>
+В то же время, разработчик имеет возможность задействовать рассматриваемый механизм, используя средства встроенного языка. Для того, чтобы установить пессимистическую блокировку объекта, можно использовать метод объекта <span class="style10"><font color="#0000ff">Заблокировать()</font></span>.
+</p>
+<br>
+<p class="style11">
+<strong>ВНИМАНИЕ</strong>
+</p>
+<blockquote>
+	<p>
+	Важным отличием версии 8.1 платформы 1С:Предприятие является то, что сам по себе факт установки блокировки не препятствует изменению или удалению объекта в базе данных. Поэтому для того, чтобы обеспечить невозможность изменения заблокированного объекта, операции изменения объекта в другом сеансе должна также предшествовать попытка блокировки того же самого объекта. Блокировка заблокированного объекта базы данных вызывает исключение, которое может быть обработано конструкцией <span class="style10"><font color="#0000ff">Попытка ... Исключение ... КонецПопытки</font></span>.
+	</p>
+</blockquote>
+<p>
+<br>
+Для снятия пессимистической блокировки разработчик может использовать метод объекта <font color="#0000ff">Разблокировать()</font>, причем использовать его для того же самого экземпляра объекта, для которого ранее была установлена блокировка.
+</p>
+<br>
+<p>
+Рассматривая возможность взаимного влияния механизмов объектных и транзакционных блокировок, напомним, что объектные блокировки не влияют на операции над данными и на процесс течения транзакций (обратите внимание, на рис 8 они расположены на разных уровнях работы с данными). Если блокировка объекта вызвала исключение, то оно, как было указано выше, может быть обработано разработчиком конфигурации и не приведет к обязательному откату транзакции. С другой стороны, блокировки объектов, установленные в течение транзакции, сохраняются при фиксации транзакции и снимаются при откате транзакции.
+</p>
+<br>
+<h3>Объектная оптимистическая блокировка</h3>
+<p>
+Оптимистическая блокировка запрещает запись объекта в базу данных, если после считывания объекта он был изменен в базе данных другими сеансами или другими программными объектами этого же сеанса.
+</p>
+<br>
+<p>
+Фактически, оптимистическая блокировка представляет собой проверку, которая выполняется перед записью объекта в базу данных. Эта проверка построена на анализе номера версии объекта, хранящейся в базе данных и номера версии, помещенной в память компьютера в момент считывания данных из информационной базы. Если при записи объекта номера его версий отличаются, то будет выдано предупреждение о том, что версия объекта изменилась или он был удален, то есть сработает оптимистическая блокировка.
+</p>
+<br>
+<p>
+Рассмотрим пример. Откроем два сеанса работы с прилагаемой к работе информационной базой: один под пользователем <span class="style6"><font color="#0000ff">Иванов</font></span>, а другой - под пользователем <span class="style6"><font color="#0000ff">Петров</font></span>. В обоих сеансах откроем откроем форму элемента <span class="style6"><font color="#0000ff">Управление торговлей</font></span> справочника <span class="style6"><font color="#0000ff">Номенклатура</font></span> (код 12). Теперь в сеансе, открытом от имени пользователя <span class="style6"><font color="#0000ff">Иванов</font></span>, изменим цену продажи с <span class="style6"><font color="#0000ff">420,00</font></span> на <span class="style6"><font color="#0000ff">450,00</font></span> и <span class="style9"><strong><font color="#993366">запишем сделанные изменения</font></strong></span>. После этого, в сеансе, открытом от имени пользователя <span class="style6"><font color="#3366ff">Петров</font></span> попробуем изменить значение какого-либо реквизита. Любая попытка изменения приведет к появлению другого окна с сообщением об ошибке (рис. 10):
+</p>
+<br>
+<p style="text-align: center">
+<img src="./tran-isolation/ch03_010.PNG" alt="Рис. 3.10. Пример работы оптимистической блокировки" title="Рис. 3.10. Пример работы оптимистической блокировки" width="804" height="265">
+</p>
+<p align="center">
+<span class="style9"><strong><font color="#993366">Рис. 10.</font></strong></span> Пример работы оптимистической блокировки
+</p>
+<br>
+<p>
+Таким образом оптимистическая блокировка гарантирует, что пользователь изменяет актуальные данные объекта, которые хранятся в информационной базе, а не какой-то их предыдущий вариант.
+</p>
+<br>
+<h2 align="center">Механизм транзакционных блокировок</h2>
+<h3 align="center">Общие сведения о транзакциях и блокировках СУБД</h3>
+<p>
+Прежде чем перейти к рассмотрению механизмов платформы 1С:Предприятие, познакомимся в общих чертах с понятиями, которые будут использованы далее.
+</p>
+<br>
+Понятие транзакционной блокировки неразрывно связано с понятием транзакции.<br>
+<br>
+<p>
+<em><font color="#ff6600">Транзакция</font></em> - это неделимая, с точки зрения воздействия на базу данных, последовательность операций манипулирования данными, выполняющаяся по принципу «все или ничего», и переводящая базу данных из одного целостного состояния в другое целостное состояние. Если по каким-либо причинам одно из действий транзакции невыполнимо или произошло какое-либо нарушение работы системы, база данных возвращается в то состояние, которое было до начала транзакции (происходит откат транзакции).
+</p>
+<br>
+<h4 align="center">Возможные проблемы при многопользовательском доступе к одним и тем же данным</h4><br>
+<p>
+Работа в многопользовательской среде требует соблюдения определенного компромисса между требованиями предсказуемости, целостности и непротиворечивости данных информационной базы и требованиями параллельности работы.
+</p>
+<br>
+<p>
+Как известно, при одновременном чтении и изменении одних и тех же данных конкурирующими транзакциями могут возникнуть следующие проблемы одновременного доступа:
+</p>
+<ul>
+	<li><span class="style4"><em><font color="#ff6600">Проблема потерянного изменения (англ. The Lost Update Problem)</font></em> </span>- если две транзакции изменяют одни и те же данные, взяв в качестве первоисточника начальное значение этих данных, то в системе останутся изменения внесенные той транзакцией, которая записала свои изменения последней, поскольку эти изменения заменят собой все изменения, внесенные до этого. </li>
+</ul>
+<blockquote>
+	<p>
+	<span class="style9"><strong><font color="#993366">Пример.</font></strong></span> Рассмотрим следующий пример. Допустим в справочнике <span class="style6"><font color="#0000ff">Номенклатура</font></span>, Транзакция №1 обратилась к элементу <span class="style6"><font color="#0000ff">1С:Предприятие 8.0. Управление торговлей</font></span> и решила изменить значение реквизита <span class="style6"><font color="#0000ff">ЦенаПродажи</font></span> с <span class="style6"><font color="#0000ff">420</font></span> на <span class="style6"><font color="#0000ff">450</font></span>. Одновременно Транзакция №2 решила у этого же товара изменить значение реквизита <span class="style6"><font color="#0000ff">ЕдиницаИзмерения</font></span> со <span class="style6"><font color="#0000ff">Штука</font></span> на <span class="style6"><font color="#0000ff">Коробка</font></span>. Распределение по времени описанных действий показано на рис. 11. Таким образом, в элементе справочника остались только те изменения, которые сделала Транзакция №2.
+	</p>
+	<p>
+	<span class="style9"><strong><font color="#993366">Вывод.</font></strong></span> Нельзя одновременно изменять одни и те же данные;
+	</p>
+</blockquote>
+<p>
+<img src="./tran-isolation/ch03_011.png" alt="Рис. 3.11. Иллюстрация проблемы последнего изменения" title="Рис. 3.11. Иллюстрация проблемы последнего изменения" width="1133" height="506">
+</p>
+<font color="#993366"><strong>Рис. 11.</strong></font> Иллюстрация проблемы потерянного изменения&nbsp;
+<ul>
+	<li><em><font color="#ff6600">Проблема «грязного» чтения (англ. The Uncommitted Dependency Problem)</font></em> - если одна транзакция начнет считывать некоторые данные не дождавшись окончания внесения изменений, вносимых в эти данные другой транзакцией, то достаточно вероятен случай, когда прочитанные данные будут содержать неверную информацию.</li>
+</ul>
+<blockquote>
+	<strong><font color="#993366">Пример.</font></strong> Вернемся к примеру, рассмотренному выше. Допустим в справочнике <font color="#0000ff">Номенклатура</font>, Транзакция №1 обратилась к элементу <font color="#3366ff">1С:Предприятие 8.0. Управление торговлей</font> и изменила значение реквизита <font color="#3366ff">ЦенаПродажи</font> с <font color="#3366ff">420</font> на <font color="#3366ff">450</font>. Не дождавшись фиксации изменений, Транзакция №2 использовала значение реквизита для определения суммы продажи. Однако, первая транзакция решила не сохранять внесенные изменения (откат транзакции) и восстановила старые данные. Графическое представление действий транзакций показано на рис. 12. Таким образом, Транзакция №2 в своих расчетах использовала данные, не существующие в системе.<strong><font color="#993366">Вывод.</font></strong> Нельзя читать уже измененные, но еще не записанные данные.
+</blockquote>
+<p align="center">
+<img src="./tran-isolation/ch03_012.png" alt="Рис. 3.12. Иллюстрация проблемы «грязного» чтения" title="Рис. 3.12. Иллюстрация проблемы «грязного» чтения" width="1126" height="527"><strong><font color="#993366">Рис. 12.</font></strong> Иллюстрация проблемы «грязного» чтения
+</p>
+<ul>
+	<li><em><font color="#ff6600">Проблема неповторяемого чтения (англ. The Inconsistent Analysis Problem) </font></em>- если одна транзакция несколько раз считывает одни и те же данные, а вторая - вносит изменения в эти данные между циклами чтения данных первой транзакции, то при повторном считывании первая транзакция может получить другой набор данных.</li>
+</ul>
+<blockquote>
+	<p>
+	<strong><font color="#993366">Пример.</font></strong> Допустим, в нашем примере, Транзакция №1 два раза подряд обращается к элементу справочника <font color="#3366ff">1С:Предприятие 8.0. Управление торговлей</font> и каждый раз считывает значение реквизита <font color="#3366ff">ЦенаПродажи</font>. Если в промежуток между первым и вторым чтением вклинится Транзакция №2 и изменит значение этого реквизита, то в результате получится, что первая транзакция работает с данными, которые с ее точки зрения самопроизвольно изменяются. Графическое представление данной проблемы показано на рис. 13.
+	</p>
+	<p>
+	<font color="#993366"><strong>Выводы. </strong></font>Нельзя повторно читать измененные и записанные данные, если эти же самые данные уже были прочитаны до внесения в них изменений;
+	</p>
+</blockquote>
+<p>
+<img src="./tran-isolation/ch03_013.png" alt="Рис. 3.13. Иллюстрация проблемы неповторяемого чтения" title="Рис. 3.13. Иллюстрация проблемы неповторяемого чтения" width="1120" height="474">
+</p>
+<p align="center">
+<strong><font color="#993366">Рис. 13.</font></strong> Иллюстрация проблемы неповторяемого чтения
+</p>
+<ul>
+	<li><em><font color="#ff6600">Проблема чтения фантомов (англ. The Phantom Read Problem)</font></em> - если первая транзакция считывает данные и потом на их основе осуществляет определенные действия, а вторая транзакция в этот момент добавляет в эти данные новую информацию, то как и в предыдущем случае это может привести к некорректному результату. </li>
+</ul>
+<blockquote>
+	<p>
+	<strong><font color="#993366">Пример.</font></strong> Допустим, компания занимается продажей товаров и состоит из нескольких отделов. В случае, когда объем продаж сотрудников одного отдела превышает 1000 рублей, то каждый сотрудник отдела получает премию 20 % от суммы своих продаж. В противном случае, размер премии составляет 10 %. Очевидно, что процесс начисления премии сотрудникам каждого отдела будет состоять из нескольких операций:
+	</p>
+	<ul>
+		<li>получения общей суммы продаж по отделу в целом путем суммирования отдельных продаж по каждому из сотрудников;</li>
+		<li>определения на основании полученных данных процента премии;</li>
+		<li>расчета суммы премии для каждого из сотрудников отдела.</li>
+	</ul>
+	<p>
+	Предположим, что данные о продажах вводит Транзакция №2, а размер премии рассчитывает Транзакция №1. Тогда при одновременной работе транзакций может возникнуть ситуация, показанная на рис. 14. Таким образом, Транзакция №1 в двух одинаковых выборках строк получил разные результаты.
+	</p>
+	<p>
+	<strong><font color="#993366">Выводы. </font></strong>Нельзя вводить новые данные (удалить имеющиеся), если они могут попасть в уже один раз прочитанные данные при повторном чтении.
+	</p>
+</blockquote>
+<p>
+<img src="./tran-isolation/ch03_014.png" alt="Рис. 3.14. Иллюстрация проблемы фантомов" title="Рис. 3.14. Иллюстрация проблемы фантомов" width="930" height="428">
+</p>
+<p align="center">
+<strong><font color="#993366">Рис. 14.</font></strong> Иллюстрация проблемы фантомов
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+Строго говоря, список вышеперечисленных проблем не является окончательным.
+</p>
+<h3 align="center">Уровни изоляции транзакций</h3>
+<p>
+Итак, ради увеличения производительности системы мы должны допустить параллельное выполнение транзакций. При этом мы так же должны обеспечить необходимую нам степень целостности данных (то есть, ограничить параллельность транзакций при работе с одними ресурсами). Строгость этих ограничений может быть различной, в зависимости от решаемой задачи. Поэтому нам необходим механизм гибкой настройки этих ограничений. В современных СУБД такая возможность реализуется путем применения <font color="#ff0000"><em>уровней изоляции транзакций</em></font>. Например, MS SQL Server 2000 позволяет использовать следующие уровни изоляции транзакции:
+</p>
+<ul>
+	<li><strong><font color="#993366">READ UNCOMMITED</font></strong> - незавершенное чтение. Низший уровень изоляции, обеспечивает максимальную параллельность выполнения транзакций. Данный уровень защищает изменяемые мной данные от изменений, которые могут внести конкурирующие транзакции. Если другой транзакции необходимо <font color="#ff6600"><em>изменить</em></font> те же самые данные, то она должна ожидать завершения <font color="#ff6600"><em>изменения</em></font> данных моей транзакцией. Однако чтение данных разрешено. Таким образом этот уровень изоляции допускает чтение незавершенных изменений данных.</li>
+	<li><strong><font color="#993366">READ COMMITED</font></strong> -&nbsp; обеспечивает запрет «грязного» чтения. Если моя транзакция начала <font color="#ff6600"><em>изменять</em></font> данные, то конкурирующая транзакция не может не только измененить, но даже <font color="#ff6600"><em>прочитать </em><font color="#000000">их до</font></font> завершения моих изменений. После того, как мои изменения закончены, конкурирующие транзакции могут читать данные, не дожидаясь окончания моей транзакции в целом. Таким образом существует проблема неповторяемого чтения.</li>
+	<li><font color="#993366"><strong>REPEATABLE READ</strong></font> - обеспечивает повторяемость чтения данных. Если моя транзакция начинает <font color="#ff6600"><em>читать</em></font> данные, то другая транзакция не может их <em><font color="#ff6600">изменить</font></em> до окончания моей транзакции.</li>
+	<li><strong><font color="#993366">SERIALIZABLE</font></strong> - последовательное выполнение. Этот уровень изоляции является максимальным и обеспечивает полную изоляцию транзакций друг от друга. Решаются все рассмотренные проблемы, включая проблему «фантомов».</li>
+</ul>
+<p>
+В зависимости от используемого уровня изоляции, СУБД накладывает различные типы блокировок на различные объекты базы данных на различное время.
+</p>
+<h2 align="center">Режим автоматических блокировок</h2>
+<p>
+Режим автоматических блокировок в 1С:Предприятии 8.1 полностью аналогичен механизму транзакционных блокировок, использовавшемуся в версии 8.0. В этом режиме 1С:Предприятие целиком «полагается» на возможности, предоставляемые СУБД (рис. 15).
+</p>
+<div style="text-align: center">
+<img src="./tran-isolation/ch03_015.png" alt="Рис. 3.15. Атоматические блокировки в транзакции 1С:Предприятия 8" title="Рис. 3.15. Атоматические блокировки в транзакции 1С:Предприятия 8" width="369" height="267">
+</div>
+<p align="center">
+<font color="#993366"><strong>Рис. 15.</strong></font> Автоматические блокировки в транзакции 1С:Предприятия 8
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+Такой подход позволяет разработчику не задумываться о достаточно сложных вопросах блокирования нужных данных в транзакции. Однако СУБД не имеет информации о логической структуре данных 1С:Предприятия, и платформе приходится использовать достаточно высокие уровни изоляции транзакций СУБД для того, чтобы обеспечить целостность и непротиворечивость данных (табл. 3): Repeatable Read и Serializable для MS SQL Server, Serializable для IBM DB2 и блокировка таблиц целиком для PostgreSQL.
+</p>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<strong><font color="#993366">Таблица 3.</font></strong> Блокировки СУБД, используемые в режиме автоматических блокировок в транзакции
+</p>
+<table border="1" cellspacing="2" cellpadding="5" align="center">
+	<tbody>
+		<tr>
+			<td>&nbsp;</td>
+			<td colspan="4">
+			<p align="center">
+			<strong>СУБД</strong>
+			</p>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>
+			<p align="center">
+			&nbsp;<strong>Файловая база данных</strong>
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			<strong>&nbsp;MS SQL Server</strong>
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			<strong>&nbsp;IBM DB2</strong>
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			<strong>&nbsp;PostgreSQL</strong>
+			</p>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;<strong>Вид блокировок</strong></td>
+			<td>
+			<p align="center">
+			&nbsp;Таблиц
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			&nbsp;Записей
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			&nbsp;Записей
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			&nbsp;Таблиц
+			</p>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;<strong>Уровень изоляции транзакций</strong></td>
+			<td>
+			<p align="center">
+			&nbsp;Serializable
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			&nbsp;Repeatable Read или Serializable
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			&nbsp;Serializable
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			&nbsp;Read Committed
+			</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+<br>
+Зачастую такой подход приводит к возникновению «плохих» (избыточных) блокировок и не позволяет достичь желаемой параллельности работы пользователей. В клиент-серверном варианте блокировка данных происходит на уровне записей, однако может быть заблокирована и вся таблица целиком (например, в результате выбора СУБД <a href="http://kb.1c.ru/articleView.jsp?id=16">неоптимального плана выполнения запроса</a> ). Тип блокировок, устанавливаемых в том или ином случае, зависит от вида операции, используемого 1С:Предприятием уровня изоляции транзакций и определяется внутренними механизмами самой СУБД (например, MS SQL Server).
+</p>
+<h2 align="center">Режим управляемых блокировок</h2>
+<p>
+В 1С:Предприятии версии 8.1 реализован дополнительный режим работы, позволяющий использовать собственный менеджер транзакционных блокировок 1С:Предприятия, независимый от используемой СУБД (рис. 16).
+</p>
+<p>
+&nbsp;
+</p>
+<div style="text-align: center">
+<img src="./tran-isolation/ch03_016.png" alt="Рис. 3.16. Управляемые блокировки в транзакции 1С:Предприятия 8.1" title="Рис. 3.16. Управляемые блокировки в транзакции 1С:Предприятия 8.1" width="372" height="327">
+</div>
+<p align="center">
+<strong><font color="#993366">Рис. 16.</font></strong> Управляемые блокировки в транзакции 1С:Предприятия 8.1
+</p>
+<p align="center">
+&nbsp;
+</p>
+<p align="left">
+При работе в этом режиме система использует гораздо более низкий уровень изоляции транзакций для MS SQL Server и IBM DB2, и блокировку на уровне записей для PostgreSQL (см. таблицу 3). Это позволяет достичь более высокой параллельности работы пользователей.
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="center">
+<strong><font color="#993366">Таблица 3.</font></strong> Блокировки СУБД, используемые в режиме управляемых блокировок в транзакции
+</p>
+<table border="1" cellspacing="2" cellpadding="5" align="center">
+	<tbody>
+		<tr>
+			<td>&nbsp;</td>
+			<td colspan="4">
+			<p align="center">
+			<strong>СУБД</strong>
+			</p>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>
+			<p align="center">
+			&nbsp;<strong>Файловая база данных</strong>
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			<strong>&nbsp;MS SQL Server</strong>
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			<strong>&nbsp;IBM DB2</strong>
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			<strong>&nbsp;PostgreSQL</strong>
+			</p>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;<strong>Вид блокировок</strong></td>
+			<td>
+			<p align="center">
+			&nbsp;Таблиц
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			&nbsp;Записей
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			&nbsp;Записей
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			&nbsp;Записей
+			</p>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;<strong>Уровень изоляции транзакций</strong></td>
+			<td>
+			<p align="center">
+			&nbsp;Serializable
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			&nbsp;Read Committed
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			&nbsp;Read Committed
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			&nbsp;Read Committed
+			</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+Однако этот уровень изоляции транзакций СУБД уже не может сам по себе обеспечить целостность и непротиворечивость данных во всех случаях. Поэтому 1С:Предприятие 8.1 при модификации данных методами встроенного языка (например, метод Записать() у объектных данных) устанавливает собственные управляемые блокировки в транзакции, которые обрабатываются собственным менеджером транзакционных блокировок. Эти блокировки также могут быть установлены и разработчиком самостоятельно в тех местах кода, где требуется обеспечить неизменность считываемых в транзакции данных (разделяемая блокировка) или запретить чтение данных другими транзакциями (исключительная блокировка).
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+Управляемые блокировки 1С:Предприятия учитывают логическую структуру прикладного решения поэтому позволяют максимально точно блокировать необходимые области данных (в отличие от использовавшихся ранее блокировок СУБД, которым не известна логическая структура системы). Таким образом менеджер управляемых блокировок позовляет максимально избежать возникновения «плохих» (избыточных) блокировок, блокируюя только действительно необходимые области данных.
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+В результате любой запрос к данным прежде всего обрабатывается собственным менеджером транзакционных блокировок 1С:Предприятия 8.1 (см. рис. 16). Если на уровне 1С:Предприятия 8.1 конфликт управляемых блокировок не обнаруживается, то запрос передается далее, на исполнение СУБД. СУБД также использует собственный механизм блокировок для определения конфликтующих транзакций, но уже с более низким уровнем изоляции транзакций, чем в режиме автоматических блокировок.
+</p>
+<h2 align="center">Установка режима управления блокировками для объектов конфигурации</h2>
+<p align="left">
+В структуре объектов конфигурации существует несколько возможностей для задания режима управления блокировками.
+</p>
+<p align="left">
+<br>
+Прежде всего существует свойство Режим управления блокировкой данных самой конфигурации (рис. 17).
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="center">
+<img src="./tran-isolation/ch03_017_example.png" alt="Рис. 3.17. Список значений свойства «Режим управления блокировкой данных» в палитре свойств Конфигурации" title="Рис. 3.17. Список значений свойства «Режим управления блокировкой данных» в палитре свойств Конфигурации" width="498" height="375">
+</p>
+<p align="center">
+<strong><font color="#993366">Рис. 17.</font></strong> Список значений свойства «Режим управления блокировкой данных» в палитре свойств Конфигурации
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+При выборе значений <font color="#3366ff">Автоматический</font> или <font color="#3366ff">Управляемый</font> режим блокировок при чтении или записи данных любого объекта конфигурации будет определяться именно этим выбранным значением.
+</p>
+<p align="left">
+<br>
+Например, если установлен режим <font color="#3366ff">Автоматический</font>, то при записи, скажем, любого элемента справочника, будут использоваться автоматические блокировки, устанавливаемые СУБД. Собственнный менеджер блокировок задействован не будет. Поведение системы будет полностью аналогичным поведению версии 8.0.
+</p>
+<p align="left">
+<br>
+Если же установлен режим <font color="#3366ff">Управляемый</font>, то, независимо от того, какие режимы управления блокировками установлены для конкретных объектов конфигурации (об этом смотри далее), при записи, скажем, документа система всегда будет самостоятельно устанавливать необходимые управляемые блокировки, которые будут обрабатываться собственным менеджером транзакционных блокировок. Этот режим предназначен для работы всей конфигурации только с управляемыми блокировками в транзакции.
+</p>
+<p align="left">
+<br>
+Если же для свойства конфигурации выбран режим <font color="#3366ff">Автоматический и управляемый</font>, то для конкретного объекта конфигурации режим блокировки будет определяться значением свойства <font color="#3366ff">Режим управления блокировкой данных</font> самого объекта конфигурации (рис. 18).
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="center">
+&nbsp;<img src="./tran-isolation/ch03_018_example.png" alt="Рис. 3.18. Список значений свойства «Режим управления блокировкой данных» в палитре свойств объекта конфигурации" title="Рис. 3.18. Список значений свойства «Режим управления блокировкой данных» в палитре свойств объекта конфигурации" width="498" height="375">
+</p>
+<p align="center">
+<strong><font color="#993366">Рис. 18.</font></strong> Список значений свойства «Режим управления блокировкой данных» в палитре свойств объекта конфигурации
+</p>
+<p align="center">
+&nbsp;
+</p>
+<p align="left">
+Этот режим предназначен для постепенного или частичного перевода конфигурации в режим управляемых блокировок. Он позволяет отдельным объектам метаданных работать с управляемыми блокировками (например, наиболее «проблемным» документам и регистрам), в то время как остальные объекты работают в режиме автоматических блокировок.
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+Важной особенностью работы в режиме <font color="#3366ff">Автоматический и управляемый</font> является то, что не во всех ситуациях работа с данными объекта будет выполняться именно в том режиме, который для него указан. Рассмотрим эту особенность подробно.
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+Внутри одной транзакции, которая начата и не завершена 1С:Предприятием, может быть начата еще одна (или несколько) транзакций. Такая логика работы обеспечивается платформой автоматически, а также поддерживается средствами встроенного языка.
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+В 1С:Предприятии 8.1 при начале каждой транзакции явно (если она начата из встроенного языка) или неявно (если она начата в результате действий самой системы) указывается режим управления блокировками в данной транзакции (автоматический или управляемый). Таким образом может оказаться, что первая (объемлющая) транзакция открыта в одном режиме, а вторая - в другом режиме управления блокировками. Всего может быть четыре различных сочетания, которые представлены в таблице 3.
+</p>
+<p align="center">
+<br>
+<strong><font color="#993366">Таблица 3.</font></strong> Сочетания режимов управления блокировками в транзакции
+</p>
+<table border="1" cellspacing="2" cellpadding="5" align="center">
+	<tbody>
+		<tr>
+			<td>
+			<p align="center">
+			<strong>Режим существующей транзакции</strong>&nbsp;
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			<strong>Режим начинаемой транзакции</strong>&nbsp;
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			<strong>Результат</strong>&nbsp;
+			</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p align="center">
+			&nbsp;Автоматический
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			&nbsp;Автоматический
+			</p>
+			</td>
+			<td>
+			<p align="left">
+			&nbsp;Начинаемая транзакция будет выполнена в <strong>автоматическом</strong> режиме
+			</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p align="center">
+			&nbsp;Управляемый
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			&nbsp;Управляемый
+			</p>
+			</td>
+			<td>
+			<p align="left">
+			&nbsp;Начинаемая транзакция будет выполнена в <strong>управляемом</strong> режиме
+			</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p align="center">
+			&nbsp;Автоматический
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			&nbsp;Управляемый
+			</p>
+			</td>
+			<td>
+			<p align="left">
+			&nbsp;Начинаемая транзакция будет выполнена в <strong>автоматическом</strong> режиме
+			</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p align="center">
+			&nbsp;Управляемый
+			</p>
+			</td>
+			<td>
+			<p align="center">
+			&nbsp;Автоматический
+			</p>
+			</td>
+			<td>
+			<p align="left">
+			&nbsp;Будет вызвана исключительная ситуация
+			</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+Указанная ранее особенность проявляется в последних двух строках таблицы. Если существующая транзакция начата в автоматическом режиме, то начинаемая транзакция таже будет выполнена в автоматическом режиме, даже в том случае, если явно (во втроенном языке) или неявно (в свойствах объекта конфигурации) для нее установлен управляемый режим блокировок.
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+Если же существующая транзакция начата в управляемом режиме, то начинаемая транзакция может быть выполнена только в том случае, если для нее также указан управляемый режим. Если для нее указан автоматический режим - будет вызвана исключительная ситуация.
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+Разберем эту особенность на двух примерах.
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p>
+Например, запись элемента справочника выполняется из встроенного языка внутри транзакции, открытой разработчиком. В этом случае «первой» (явной) транзакцией будет транзакция, инициированная разработчиком, а «второй» (неявной) будет транзакция, открываемая платформой при выполнении метода <font color="#3366ff">Записать()</font> объекта справочника.
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+Явная транзакция открывается разработчиком с помощью метода встроенного языка <font color="#3366ff">НачатьТранзакцию()</font>. В отличие от версии 8.0 этот метод имеет параметр <font color="#3366ff">БлокировкаДанных</font>, который указывает какой режим управления блокировками будет использоваться в данной транзакции. По умолчанию значение этого параметра равно <font color="#3366ff">Автоматический</font>. Поэтому, если разработчик использует значение этого параметра по умолчанию, то независимо от того, какой режим установлен в свойствах записываемого справочника, его запись будет выполнена в автоматическом режиме (см. табл. 3, 1 и 3 строки).
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+Если же разработчик открывает транзакцию в управляемом режиме, то он должен быть уверен в том, что для записываемого в этой транзакции справочника, в свойствах метаданных указан управляемый режим блокировок в транзакции. В противном случае при записи элемента справочника будет вызвана исключительная ситуация (см. табл. 3, 2 и 4 строки).
+</p>
+<p align="left">
+Рассмотрим другой пример - интерактивное проведение документа, который выполняет движения по регистру накопления. В этом случае «первой» (неявной) транзакцией будет транзакция, открываемая системой при записи документа, а «второй» (также неявной) будет транзакция, открываемая системой при записи набора записей регистра накопления.
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+Далее все аналогично предыдущему примеру. Если для документа в метаданных установлен автоматический режим управления блокировками, то независимо от того, какой режим установлен в метаданных для регистра накопления, запись его набора записей всегда будет выполняться в автоматическом режиме.
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+Если же для документа установлен управляемый режим блокировок в транзакции, то для регистра накопления таже должен быть установлен управляемый режим, иначе при проведении документа будет вызвана исключительная ситуация.
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+Из этих примеров можно сделать следующий общий вывод. Если, например, стоит задача повысить параллельность работы при проведении отдельного документа, не переводя при этом всю конфигурацию в управляемый режим, то последовательность действий должна быть следующей:
+</p>
+<ul>
+	<li>
+	<div align="left">
+	свойство конфигурации <font color="#3366ff">Режим управления блокировкой данных</font> необходимо установить в значение <font color="#3366ff">Автоматический и управляемый</font>;
+	</div>
+	</li>
+	<li>
+	<div align="left">
+	свойство <font color="#3366ff">Режим управления блокировкой данных</font> объекта метаданных документ необходимо установить в значение <font color="#3366ff">Управляемый</font>;
+	</div>
+	</li>
+	<li>
+	<div align="left">
+	у всех регистров, по которым данный документ выполняет движения, следует установить свойство <font color="#3366ff">Режим управления блокировкой данных</font> в значение <font color="#3366ff">Управляемый</font>;
+	</div>
+	</li>
+	<li>
+	<div align="left">
+	проанализировать процедуру проведения документа на предмет наличия:
+	</div>
+	</li>
+	<ul>
+		<li>
+		<div align="left">
+		явных вызовов транзакций
+		</div>
+		</li>
+		<li>
+		<div align="left">
+		неявных вызовов транзакций, которые выполняются системой при модификации данных каких-либо объектов конфигурации
+		</div>
+		</li>
+	</ul>
+	<li>
+	<div align="left">
+	для найденных явных и неявных вызовов транзакций обеспечить их выполнение в управляемом режиме
+	</div>
+	</li>
+	<ul>
+		<li>
+		<div align="left">
+		для явных вызовов - параметр метода <font color="#3366ff">НачатьТранзакцию()</font>;
+		</div>
+		</li>
+		<li>
+		<div align="left">
+		для неявных вызовов - свойство Режим управления блокировкой данных модифицируемого объекта конфигурации;
+		</div>
+		</li>
+	</ul>
+	<li>
+	<div align="left">
+	в теле процедуры проведения документа установить необходимые управляемые блокировки (об этом см. далее).
+	</div>
+	</li>
+</ul>
+<h2 align="center">Установка управляемых блокировок</h2>
+<p align="left">
+<br>
+Средствами встроенного языка установка управляемых блокировок внутри явной или скрытой (неявной) транзакции происходит с помощью специального объекта <font color="#3366ff">БлокировкаДанных</font>, описание доступных свойств и методов которого можно посмотреть в синтакс-помощнике в ветви Общие объекты (рис. 19).
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+&nbsp;
+</p>
+<div style="text-align: center">
+<img src="./tran-isolation/ch03_019_example.PNG" alt="Рис. 3.19. Набор свойств и методов объекта «БлокировкаДанных» доступных в Синтакс-помощнике" title="Рис. 3.19. Набор свойств и методов объекта «БлокировкаДанных» доступных в Синтакс-помощнике" width="399" height="705">
+</div>
+<div style="text-align: center">
+<p class="picnazv">
+<span class="bold"></span><strong><font color="#993366">Рис. 19.</font></strong> Набор свойств и методов объекта «БлокировкаДанных» доступных в Синтакс-помощнике
+</p>
+<p class="picnazv" align="left">
+&nbsp;
+</p>
+<p class="picnazv" align="left">
+Новый экземпляр данного объекта может быть создан с помощью одноименного конструктора и представляет собой коллекцию элементов блокировки данных. Изначально эта коллекция пуста и задача разработчика состоит в добавлении в эту коллекцию некоторого количества элементов блокировки.
+</p>
+<p class="picnazv" align="left">
+&nbsp;
+</p>
+<p class="picnazv" align="left">
+При добавлении нового элемента блокировки для него необходимо указать <em>пространство блокировок</em>, которое будет блокировать данный элемент. Пространства блокировок определены в платформе 1С:Предприятия 8.1 и соответствуют структуре прикладных объектов конфигурации. Допустимы следующие имена пространств блокировок и имена полей пространств блокировок (табл. 9):
+</p>
+<p class="picnazv" align="left">
+&nbsp;
+</p>
+<p class="picnazv" align="left">
+&nbsp;
+</p>
+<table border="1" cellspacing="2" cellpadding="5" width="678" style="height: 195px">
+	<tbody>
+		<tr>
+			<td>&nbsp; Имя пространства блокировок<span style="font-size: 10pt; font-family: &quot;Times New Roman&quot;"></span></td>
+			<td>Поля пространства блокировок</td>
+		</tr>
+		<tr>
+			<td>&nbsp;Справочник.&lt;имя&gt;</td>
+			<td>&nbsp;Ссылка</td>
+		</tr>
+		<tr>
+			<td>&nbsp;Документ.&lt;имя&gt;</td>
+			<td>&nbsp; Ссылка</td>
+		</tr>
+		<tr>
+			<td>&nbsp;ПланОбмена.&lt;имя&gt;</td>
+			<td>&nbsp; Ссылка</td>
+		</tr>
+		<tr>
+			<td>&nbsp;ПланСчетов.&lt;имя&gt;</td>
+			<td>&nbsp; Ссылка</td>
+		</tr>
+		<tr>
+			<td>&nbsp;БизнеcПроцесс.&lt;имя&gt;</td>
+			<td>&nbsp; Ссылка</td>
+		</tr>
+		<tr>
+			<td>&nbsp;Задача.&lt;имя&gt;</td>
+			<td>&nbsp; Ссылка</td>
+		</tr>
+		<tr>
+			<td>&nbsp;ПланВидовРасчета.&lt;имя&gt;</td>
+			<td>&nbsp; Ссылка</td>
+		</tr>
+		<tr>
+			<td>&nbsp;ПланВидовХарактеристик.&lt;имя&gt;</td>
+			<td>&nbsp; Ссылка</td>
+		</tr>
+		<tr>
+			<td>&nbsp;РегистрСведений.&lt;имя&gt;.НаборЗаписей - только для регистра сведений, подчиненного регистратору</td>
+			<td>&nbsp;Регистратор</td>
+		</tr>
+		<tr>
+			<td>&nbsp;РегистрСведений.&lt;имя&gt;</td>
+			<td>&nbsp;Период - если есть;<br>
+			&lt;имя измерения&gt;<br>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;РегистрНакопления.&lt;имя&gt;.НаборЗаписей</td>
+			<td>&nbsp;Регистратор</td>
+		</tr>
+		<tr>
+			<td>&nbsp;РегистрНакопления.&lt;имя&gt;</td>
+			<td>Период;<br>
+			&lt;имя измерения&gt;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;РегистрБухгалтерии.&lt;имя&gt;.НаборЗаписей</td>
+			<td>&nbsp;Регистратор</td>
+		</tr>
+		<tr>
+			<td>&nbsp;РегистрБухгалтерии.&lt;имя&gt;</td>
+			<td>&nbsp;Период;<br>
+			&lt;вид движения&gt; - значение системного перечисления ВидДвиженияБухгалтерии;<br>
+			Счет - обязательное поле;<br>
+			Субконто;<br>
+			&lt;вид субконто&gt;;<br>
+			&lt;имя измерения&gt;<br>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;РегистрРасчета.&lt;имя&gt;.НаборЗаписей</td>
+			<td>&nbsp;Регистратор</td>
+		</tr>
+		<tr>
+			<td>&nbsp;РегистрРасчета.&lt;имя&gt;</td>
+			<td>&nbsp;ПериодРегистрации;<br>
+			ПериодДействия;<br>
+			&lt;имя измерения&gt;<br>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;Перерасчет.&lt;имя&gt;.НаборЗаписей</td>
+			<td>&nbsp;ОбъектПерерасчета</td>
+		</tr>
+		<tr>
+			<td>&nbsp;Перерасчет.&lt;имя&gt;</td>
+			<td>&nbsp;ВидРасчета</td>
+		</tr>
+		<tr>
+			<td>&nbsp;Последовательность.&lt;имя&gt;.НаборЗаписей</td>
+			<td>&nbsp;Регистратор</td>
+		</tr>
+		<tr>
+			<td>&nbsp;Последовательность.&lt;имя&gt;</td>
+			<td>&nbsp;&lt;имя измерения&gt;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;Константа.&lt;имя&gt;</td>
+			<td>
+			<p>
+			&nbsp;&nbsp;
+			</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<div style="text-align: center">
+&nbsp;
+</div>
+<div align="left" style="text-align: center">
+<div align="left">
+Как видно из таблицы, для <strong>объектных данных</strong> (справочник, документ и др.) определено единственное пространство блокировки - сам объект данных. Для <strong>необъектных данных</strong> (например, регистры) определено по два пространства блокировок, которые имеют разный логический смысл. <br>
+</div>
+<div align="left">
+&nbsp;
+</div>
+<div align="left">
+Пространство блокировок с суффиксом <font color="#3366ff">НаборЗаписей</font> используется в тех случаях, когда необходимо заблокировать сами записи данного объекта (например, при добавлении новых записей). <br>
+</div>
+<div align="left">
+&nbsp;
+</div>
+<div align="left">
+Пространство блокировок без суффикса используется тогда, анализируются некоторые данные этого объекта (например, остатки регистра), или когда выполняются какие-либо операции, приводящие к изменению существующих данных объекта (например, восстановление границы последовательности).<br>
+</div>
+<div align="left">
+&nbsp;
+</div>
+<div align="left">
+После того, как элемент блокировки, соответствующий некоторому пространству блокировок, добавлен, следует установить для этого элемента режим блокировки (разделяемая или исключительная) и определить значения полей блокировки, чтобы указать, какие же именно «записи» будут заблокированы (для каждого пространства блокировок в платформе определены имена полей, значения которых могут задаваться при установке тех или иных блокировок).<br>
+</div>
+&nbsp;
+</div>
+<p>
+<font color="#ff0000"><strong>ВНИМАНИЕ</strong></font>
+</p>
+<p>
+&nbsp;
+</p>
+<blockquote>
+	<p>
+	Следует понимать, что, в данном случае речь не идет о реальных записях базы данных. Несмотря на то, что управляемые блокировки описываются в терминах объектов метаданных и их полей, эти блокировки никак не связаны с реальной структурой хранения данных 1С:Предприятия в СУБД. Это всего лишь записи о том, что заблокировано «нечто».
+	</p>
+	<p>
+	&nbsp;
+	</p>
+	<p>
+	Иногда можно провести аналогию между управляемыми блокировками и реальными записями СУБД. Например, для объектных данных блокировка объекта с указанной ссылкой будет «соответствовать» блокировке всех записей, содержащих указанную ссылку, во всех таблицах этого объекта метаданных (в основной таблице и в таблицах его табличных частей).
+	</p>
+	<p>
+	&nbsp;
+	</p>
+	<p>
+	Однако в других случаях провести такую аналогию достаточно затруднительно, да и не нужно. Например, блокировка регистра бухгалтерии с указанием значения вида субконто. Достаточно понимать, что накладывая такую блокировку мы запрещаем другим транзакциям каким-либо образом изменять «записи» регистра бухгалтерии, у которых значение вида субконто равно указанному нами. Как при этом данное условие «проецируется» на реальную структуру данных регистра бухгалтерии  - для нас совершенно не важно.
+	</p>
+	<p>
+	&nbsp;
+	</p>
+	<p>
+	При установке новых блокировок менеджер анализирует имеющиеся блокировки. Если оказывается, что «нечто», что мы пытаемся заблокировать, уже заблокировано ранее, сравниваются режимы существующей и новой блокировок. Если режимы совместимы - новая блокировка устанавливается. Если режимы не совместимы - новая блокировка ожидает снятия существующей блокировки.
+	</p>
+	<p>
+	&nbsp;
+	</p>
+</blockquote>
+<p>
+Условия необходимо ставить именно на те поля, имена которых приведены в списке имен пространств блокировок. Для каждого пространства блокировок количество устанавливаемых условий не ограничено. Условия могут быть заданы или на равенство значения поля какому-либо значению, или на вхождение значения поля в указанный диапазон.
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+Существует два способа задания условий на поля пространств блокировки:
+</p>
+<ul>
+	<li>с помощью явного задания имени поля и его значения;</li>
+	<li>с помощью указания источника данных, содержащего необходимые значения</li>
+</ul>
+<p>
+При <strong>явном</strong> задании имени поля и его значения необходимо использовать метод <font color="#3366ff">УстановитьЗначение() </font>объекта <font color="#3366ff">ЭлементБлокировкиДанных</font>. В этом случае имя и значение указывают в качестве параметров метода, например так, как показано в листинге 1:
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+<font color="#993366"><strong>Листинг 1.</strong></font> Пример установки условия блокировки записей с помощью явного указания имени поля и его значения
+</p>
+<p>
+&nbsp;
+</p>
+<div class="sampcont"><samp><span class="comment">// Создать объект блокировка данных</span><br>БлокировкаДанных <span class="sign">=</span> <span class="word">Новый</span> БлокировкаДанных<span class="sign">;</span><br></samp></div>
+<div class="sampcont"><samp><span class="comment">// Добавить новый элемент блокировки, блокирующий «нечто» в данных регистра накопления Остатки номенклатуры </span><br>ЭлементБлокировки <span class="sign">=</span> БлокировкаДанных<span class="sign">.</span>Добавить<span class="sign">(</span><span class="string">"РегистрНакопления.ОстаткиНоменклатуры"</span><span class="sign">)</span><span class="sign">;</span><br></samp></div>
+<div class="sampcont"><samp><span class="comment">// Установить режим блокировки - исключительный. Другие транзакции, устанавливающие управляемые</span><br><span class="comment">// блокировки, не смогут даже начать чтение этих данных</span><br>ЭлементБлокировки<span class="sign">.</span>Режим <span class="sign">=</span> РежимБлокировкиДанных<span class="sign">.</span>Исключительный<span class="sign">;</span><br></samp></div>
+<div class="sampcont"><samp><span class="comment">// Указать, что именно мы блокируем в данных регистра Остатки номенклатуры - все «записи», у которых </span><br><span class="comment">// значение измерения Склад равно значению, содержащемуся в переменной Склад</span><br>ЭлементБлокировки<span class="sign">.</span>УстановитьЗначение<span class="sign">(</span><span class="string">"Склад"</span><span class="sign">,</span> Склад<span class="sign">)</span><span class="sign">;</span><br></samp></div>
+<p>
+&nbsp;
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+Для значений типа <font color="#3366ff">Дата </font>или <font color="#3366ff">Число </font>в качестве значения может быть задан некоторый диапазон значений. Диапазон значений передается методу с помощью объекта встроенного языка - <font color="#3366ff">Диапазон</font>. Данный объект позволяет задать верхнюю и нижнюю границы диапазона, причем в диапазон включаются и границы диапазона (листинг 2).
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+<font color="#993366"><strong>Листинг 2.</strong></font> Пример установки условия блокировки записей с помощью задания диапазона
+</p>
+<p>
+&nbsp;
+</p>
+<div class="sampcont"><samp><span class="comment">// Создать объект блокировка данных</span><br>БлокировкаДанных <span class="sign">=</span> <span class="word">Новый</span> БлокировкаДанных<span class="sign">;</span><br></samp></div>
+<div class="sampcont"><samp><span class="comment">// Добавить новый элемент блокировки, блокирующий «нечто» в данных регистра накопления Продажи </span><br>ЭлементБлокировки <span class="sign">=</span> БлокировкаДанных<span class="sign">.</span>Добавить<span class="sign">(</span><span class="string">"РегистрНакопления.Продажи"</span><span class="sign">)</span><span class="sign">;</span><br></samp></div>
+<div class="sampcont"><samp><span class="comment">// Установить режим блокировки - разделяемый. Эти данные гарантировано не будут изменены другими</span><br><span class="comment">// транзакциями до окончания существующей транзакции</span><br>ЭлементБлокировки<span class="sign">.</span>Режим <span class="sign">=</span> РежимБлокировкиДанных<span class="sign">.</span> Разделяемый<span class="sign">;</span><br></samp></div>
+<div class="sampcont"><samp><span class="comment">// Указать, что именно мы блокируем в данных регистра Продажи - все «записи», у которых </span><br><span class="comment">// значение измерения Контрагент равно значению, содержащемуся в переменной Контрагент</span><br>ЭлементБлокировки<span class="sign">.</span>УстановитьЗначение<span class="sign">(</span><span class="string">"Контрагент"</span><span class="sign">,</span> Контрагент<span class="sign">)</span><span class="sign">;</span><br></samp></div>
+<div class="sampcont"><samp><span class="comment">// Создать объект Диапазон, описывающих интервал от начала месяца, к которому принадлежит указанная дата, </span><br><span class="comment">// до указанной даты</span><br>Диапазон <span class="sign">=</span> <span class="word">Новый</span> Диапазон<span class="sign">(</span>НачалоМесяца<span class="sign">(</span>Дата<span class="sign">)</span><span class="sign">,</span> Дата<span class="sign">)</span><span class="sign">;</span><br></samp></div>
+<div class="sampcont"><samp><span class="comment">// Указать, что именно мы блокируем в данных регистра Продажи - все «записи», у которых </span><br><span class="comment">// значение измерения Контрагент равно значению, содержащемуся в переменной Контрагент,</span><br><span class="comment">// и значение поля Период содержится в указанном диапазоне</span><br>ЭлементБлокировки<span class="sign">.</span>УстановитьЗначение<span class="sign">(</span><span class="string">"Период"</span><span class="sign">,</span> Диапазон<span class="sign">)</span><span class="sign">;</span><br></samp></div>
+<p>
+&nbsp;
+</p>
+<p>
+При указании <strong>источника данных</strong> сначала необходимо задать свойство <font color="#3366ff">ИсточникДанных </font>объекта <font color="#3366ff">ЭлементБлокировкиДанных</font>, после чего, используя метод <font color="#3366ff">ИспользоватьИзИсточникаДанных</font>(), настроить соответствие полей области блокировки данных полям источника данных (листинг 3).
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+<font color="#993366"><strong>Листинг 3.</strong></font> Пример установки условия блокировки записей с помощью источника данных
+</p>
+<p>
+&nbsp;
+</p>
+<div class="sampcont"><samp><span class="comment">// Создать объект блокировка данных</span><br>БлокировкаДанных <span class="sign">=</span> <span class="word">Новый</span> БлокировкаДанных<span class="sign">;</span><br></samp></div>
+<div class="sampcont"><samp><span class="comment">// Добавить новый элемент блокировки, блокирующий «нечто» в данных регистра накопления Остатки номенклатуры </span><br>ЭлементБлокировки <span class="sign">=</span> БлокировкаДанных<span class="sign">.</span>Добавить<span class="sign">(</span><span class="string">"РегистрНакопления.ОстаткиНоменклатуры"</span><span class="sign">)</span><span class="sign">;</span><br></samp></div>
+<div class="sampcont"><samp><span class="comment">// Установить режим блокировки - исключительный. Другие транзакции, устанавливающие управляемые</span><br><span class="comment">// блокировки, не смогут даже начать чтение этих данных</span><br>ЭлементБлокировки<span class="sign">.</span>Режим <span class="sign">=</span> РежимБлокировкиДанных<span class="sign">.</span>Исключительный<span class="sign">;</span><br></samp></div>
+<div class="sampcont"><samp><span class="comment">// Указать, что именно мы блокируем в данных регистра Остатки номенклатуры - все «записи», у которых </span><br><span class="comment">// значение измерения Склад равно значению, содержащемуся в переменной Склад</span><br>ЭлементБлокировки<span class="sign">.</span>УстановитьЗначение<span class="sign">(</span><span class="string">"Склад"</span><span class="sign">,</span> Склад<span class="sign">)</span><span class="sign">;</span><br></samp></div>
+<div class="sampcont"><samp><span class="comment">// Указать источник данных, который содержит данные для установки ограничений на другие поля этого</span><br><span class="comment">// элемента блокировки - в данном случае таблица значений СписокНоменклатуры</span><br>ЭлементБлокировки<span class="sign">.</span>ИсточникДанных <span class="sign">=</span> СписокНоменклатуры<span class="sign">;</span>  <br></samp></div>
+<div class="sampcont"><samp><span class="comment">// Указать, что именно мы блокируем в данных регистра Остатки номенклатуры - все «записи», у которых </span><br><span class="comment">// значение измерения Склад равно значению, содержащемуся в переменной Склад,</span><br><span class="comment">// и у которых значение измерения Номенклатура равно какому-либо значению, содержащемуся в колонке</span><br><span class="comment">// Номенклатура указанного источника данных</span><br>ЭлементБлокировки<span class="sign">.</span>ИспользоватьИзИсточникаДанных<span class="sign">(</span><span class="string">"Номенклатура"</span><span class="sign">,</span> <span class="string">"Номенклатура"</span><span class="sign">)</span><span class="sign">;</span><br></samp></div>
+<p>
+&nbsp;
+</p>
+<p>
+В качестве источника данных можно указывать результат запроса, табличную часть, набор записей или таблицу значений. При установке соответствия полей, именами полей источника будут являться имена колонок результата запроса, имена реквизитов табличной части, имена измерений или имена колонок таблицы значений соответственно. Заметим, что объект <font color="#3366ff">Диапазон </font>также может являться значением поля источника данных.
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+Для установки всех созданных нами блокировок используется метод объекта <font color="#3366ff">БлокировкаДанных </font>-  <font color="#3366ff">Заблокировать()</font>. На рисунке 20 показано действие данного метода в случае использования его внутри транзакции и вне ее.
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+&nbsp;
+</p>
+<div style="text-align: center">
+<img src="./tran-isolation/ch03_020.PNG" alt=" Рис. 3.20. Схема вызова метода «Заблокировать()» объекта «БлокировкаДанных»" title="Рис. 3.20. Схема вызова метода «Заблокировать()» объекта «БлокировкаДанных»" width="383" height="186">
+</div>
+<br>
+<br>
+&nbsp;
+<p>
+&nbsp;
+</p>
+<p align="center">
+<font color="#993366"><strong>
+Рис. 20.</strong></font> Схема вызова метода «Заблокировать()» объекта «БлокировкаДанных»&nbsp;
+</p>
+<p align="center">
+&nbsp;
+</p>
+<p>
+Как следует из рисунка, если этот метод выполняется внутри транзакции (явной или неявной), то блокировки устанавливаются в момент вызова метода. При окончании транзакции они будут сняты автоматически. Если же метод <font color="#3366ff">Заблокировать()</font> выполняется вне транзакции, то блокировки установлены не будут.
+</p>
+<h2>Рекомендации по модификации конфигураций при переходе к режиму управляемых блокировок&nbsp;</h2>
+<p>
+При переводе созданных ранее прикладных решений с версии 1С:Предприятие 8.0 на версию 1С:Предприятие 8.1 они требуют определенной степени доработки с точки зрения перехода к работе в режиме управляемых блокировок. Дадим ряд рекомендаций,  позволяющих определить последовательность действий разработчика в случае реализации вышеупомянутого перевода:
+</p>
+<ul>
+	<li>Конвертируем конфигурацию из версии 8.0 в конфигурацию версии 8.1. Режим управляемых блокировок - автоматический.</li>
+	<li>Если в процессе эксплуатации информационной базы возникают проблемы с параллельностью работы пользователей - например, часто стали появляться сообщения  о превышении времени ожидания блокировки  или о конфликтах взаимных блокировок, то составляем список документов, работа с которыми приводит к появлению вышеупомянутых проблем.</li>
+	<li>Постепенно переводим конфигурацю в управляемый режим. Устанавливаем свойство <font color="#3366ff">Режим управления блокировкой данных</font> всей конфигурации в целом в режим <font color="#3366ff">Автоматический и управляемый</font>.</li>
+	<li>Для указанных в списке видов документов переводим свойство <font color="#3366ff">Режим управления блокировкой данных</font> в значение <font color="#3366ff">Управляемый</font>. Также в управляемый режим переводим все регистры, по которым эти документы выполняют движения и все транзакции (явные и неявные), открываемые в процессе проведения документа.</li>
+	<li>Анализируем тексты модулей каждого из указанных видов документов. Нас интересуют операции чтения данных. Причем не все, а только те, где выполняется чтение некоторых данных, на основании которых затем модифицируются эти же, или другие данные. Очевидно, что читаемые данные в этом случае не должны быть изменены до окончания транзакции проведения документа, а значит перед чтением их требуется заблокировать.</li>
+	<li>Устанавливаем управляемые блокировки на найденные нами данные. При этом разделяемая блокировка устанавливается для того, чтобы данные не были изменены другими транзакциями. Исключительная блокировка, помимо этого, обеспечивает запрет не только изменения этих данных, но даже их чтения другими транзакциями, устанавливающими управляемые блокировки. Можно сказать, что исключительная управляемая блокировка является средством борьбы с конфликтами блокировок (deadlock) и может использоваться аналогично ключевому слову <font color="#3366ff">ДЛЯ ИЗМЕНЕНИЯ</font> языка запросов в режиме автоматических блокировок.<br>
+	</li>
+</ul>
+<p>
+<strong>ВНИМАНИЕ</strong>
+</p>
+<blockquote>
+	В режиме управляемых блокировок, за счет использования другого уровня изоляции транзакций СУБД, конструкция <font color="#3366ff">ДЛЯ ИЗМЕНЕНИЯ</font> языка запросов не работает. Таким образом, если в транзакции встречаются запросы, содержащие эту конструкцию, перед их выполнением необходимо устанавливать исключительную управляемую блокировку на читаемые данные. Это позволит в управляемом режиме обеспечить поведение, аналогичное поведению в автоматическом режиме.<br>
+	<p>
+	&nbsp;
+	</p>
+	<p>
+	Следует помнить, что чтение данных другими транзакциями будет невозможно только в том случае, если в других транзакциях устанавливаются несовместимые управляемые блокировки. Если управляемые блокировки в других транзакциях не устанавливаются, то чтение будет возможно. Это аналогично тому, как конструкция <font color="#3366ff">ДЛЯ ИЗМЕНЕНИЯ</font> препятствует чтению данных не любыми запросами, а только теми, которые тоже используют конструкцию <font color="#3366ff">ДЛЯ ИЗМЕНЕНИЯ</font>.
+	</p>
+</blockquote>
+<ul>
+	<li>При установке управляемой блокировки необходимо стремиться, чтобы блокировка была установлена только на те записи, которые будут обработаны системой в результате отработки программного кода. Другими словами, при установке управляемой блокировки желательно ставить условия на те же самые поля и по тем же самым значениям, которые были указаны, например, в тексте запроса к данным информационной базы. Например, см. текст листинга 4. <br>
+	</li>
+</ul>
+<p>
+В качестве примера, приведем фрагмент программного кода из текста обработчика <font color="#3366ff">ОбработкаПроведения()</font>, расположенного в модуле документа <font color="#3366ff">РасходнаяНакладная </font>(листинг 4). При выполнении указанного программного кода система, используя механизм запросов, сначала читает информацию из регистра накопления <font color="#3366ff">ОстаткиНоменклатуры</font>, а потом записывает в тот же самый регистр вновь сформированные данные. Согласно нашим рекомендациям, мы должны установить на записи регистра исключительную блокировку, запрещающую другим транзакциям, в которых устанавливаюся управляемые блокировки, не только запись, но и чтение, изменяемых при проведении накладной записей. В данном случае исключительная блокировка нужна для предотвращения возможного конфликта блокировок (deadlock).
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+Разбирая программный код, обратите внимание на соответствие условий при блокировке данных и в тексте запроса.
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+<font color="#993366"><strong>Листинг 4.</strong></font> Пример установки исключительной блокировки при проведении документа «РасходнаяНакладная»
+</p>
+<p>
+&nbsp;
+</p>
+<div class="sampcont"><samp>БлокировкаДанных <span class="sign">=</span> <span class="word">Новый</span> БлокировкаДанных<span class="sign">;</span><br></samp></div>
+<div class="sampcont"><samp><span class="comment">// Выбрать пространство блокировок РегистрНакопления.ОстаткиНоменклатуры, т.к. мы собираемся анализировать</span><br><span class="comment">// остатки регистра</span><br>ЭлементБлокировки <span class="sign">=</span> БлокировкаДанных<span class="sign">.</span>Добавить<span class="sign">(</span><span class="string">"РегистрНакопления.ОстаткиНоменклатуры"</span><span class="sign">)</span><span class="sign">;</span><br></samp></div>
+<div class="sampcont"><samp>ЭлементБлокировки<span class="sign">.</span>Режим <span class="sign">=</span> РежимБлокировкиДанных<span class="sign">.</span>Исключительный<span class="sign">;</span><br></samp></div>
+<div class="sampcont"><samp><span class="comment">// Заблокировать «записи» с указанным значением измерения склад, т.к. в запросе есть следующее условие:</span><br><span class="comment">// ... И Склад = &amp;Склад) ...</span><br>ЭлементБлокировки<span class="sign">.</span>УстановитьЗначение<span class="sign">(</span><span class="string">"Склад"</span><span class="sign">,</span> Склад<span class="sign">)</span><span class="sign">;</span><br></samp></div>
+<div class="sampcont"><samp><span class="comment">// Заблокировать «записи» со значениями номенклатуры из табличной части, соответствующими условию</span><br><span class="comment">// ...  РасходнаяНакладнаяСписокНоменклатуры.Номенклатура.Услуга = ЛОЖЬ ...</span><br><span class="comment">// эти данные необходимо получить запросом к табличной части</span><br>ЗапросИсточник <span class="sign">=</span> <span class="word">Новый</span> Запрос<span class="sign">;</span><br>ЗапросИсточник<span class="sign">.</span>Текст <span class="sign">=</span> <span class="string">"ВЫБРАТЬ РАЗЛИЧНЫЕ<br>|	РасходнаяНакладнаяСписокНоменклатуры.Номенклатура КАК Номенклатура<br>|ИЗ<br>|	Документ.РасходнаяНакладная.СписокНоменклатуры КАК РасходнаяНакладнаяСписокНоменклатуры<br>|ГДЕ<br>|	РасходнаяНакладнаяСписокНоменклатуры.Ссылка = &amp;Ссылка<br>|	<span class="word">И</span> РасходнаяНакладнаяСписокНоменклатуры.Номенклатура.Услуга = ЛОЖЬ"</span><span class="sign">;</span><br>ЗапросИсточник<span class="sign">.</span>УстановитьПараметр<span class="sign">(</span><span class="string">"Ссылка"</span><span class="sign">,</span> Ссылка<span class="sign">)</span><span class="sign">;</span>					   <br>ИсточникНоменклатуры <span class="sign">=</span> ЗапросИсточник<span class="sign">.</span><span class="word">Выполнить</span><span class="sign">(</span><span class="sign">)</span><span class="sign">;</span><br></samp></div>
+<div class="sampcont"><samp>ЭлементБлокировки<span class="sign">.</span>ИсточникДанных <span class="sign">=</span> ИсточникНоменклатуры<span class="sign">;</span>  <br>ЭлементБлокировки<span class="sign">.</span>ИспользоватьИзИсточникаДанных<span class="sign">(</span><span class="string">"Номенклатура"</span><span class="sign">,</span> <span class="string">"Номенклатура"</span><span class="sign">)</span><span class="sign">;</span><br>БлокировкаДанных<span class="sign">.</span>Заблокировать<span class="sign">(</span><span class="sign">)</span><span class="sign">;</span><br></samp></div>
+<div class="sampcont"><samp>Запрос <span class="sign">=</span> <span class="word">Новый</span> Запрос<span class="sign">;</span><br>Запрос<span class="sign">.</span>Текст <span class="sign">=</span> "ВЫБРАТЬ<br><span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span><br>|	ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления<span class="sign">.</span>ОстаткиНоменклатуры<span class="sign">.</span>Остатки<span class="sign">(</span><span class="sign">&amp;</span>МомВремени<span class="sign">,</span><br>|					Номенклатура В <span class="sign">(</span>ВЫБРАТЬ РАЗЛИЧНЫЕ<br>|										РасходнаяНакладнаяСписокНоменклатуры<span class="sign">.</span>Номенклатура<br>|									<span class="word">ИЗ</span><br>|										Документ<span class="sign">.</span>РасходнаяНакладная<span class="sign">.</span>СписокНоменклатуры КАК                        |																	РасходнаяНакладнаяСписокНоменклатуры<br>|									ГДЕ<br>|										РасходнаяНакладнаяСписокНоменклатуры<span class="sign">.</span>Ссылка <span class="sign">=</span> <span class="sign">&amp;</span>Ссылка<br>|										<span class="word">И</span> РасходнаяНакладнаяСписокНоменклатуры<span class="sign">.</span>Номенклатура<span class="sign">.</span>Услуга <span class="sign">=</span> <span class="word">ЛОЖЬ</span><span class="sign">)</span><br>|										<span class="word">И</span> Склад <span class="sign">=</span> <span class="sign">&amp;</span>Склад<span class="sign">)</span> КАК ОстаткиНоменклатурыОстатки<br></samp></div>
+<div class="sampcont"><samp><span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span>           <br>|"<span class="sign">;</span><br><span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span>           <br><span class="word">Пока</span> Выборка<span class="sign">.</span>Следующий<span class="sign">(</span><span class="sign">)</span> <span class="word">Цикл</span><br><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span><span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span> <span class="sign">.</span><br><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span><span class="comment">// регистр ОстаткиНоменклатуры Расход</span><br><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span>Движение <span class="sign">=</span> Движения<span class="sign">.</span>ОстаткиНоменклатуры<span class="sign">.</span>Добавить<span class="sign">(</span><span class="sign">)</span><span class="sign">;</span><br><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span>Движение<span class="sign">.</span>ВидДвижения <span class="sign">=</span> ВидДвиженияНакопления<span class="sign">.</span>Расход<span class="sign">;</span><br><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span>Движение<span class="sign">.</span>Период <span class="sign">=</span> Дата<span class="sign">;</span><br><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span>Движение<span class="sign">.</span>Номенклатура <span class="sign">=</span> Выборка<span class="sign">.</span>Номенклатура<span class="sign">;</span><br><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span>Движение<span class="sign">.</span>Склад <span class="sign">=</span> Склад<span class="sign">;</span><br><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span>Движение<span class="sign">.</span>Количество <span class="sign">=</span> Выборка<span class="sign">.</span>Количество<span class="sign">;</span><br><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span>СуммаСписания <span class="sign">=</span> <span class="sign">?</span><span class="sign">(</span>Выборка<span class="sign">.</span>КоличествоОстаток <span class="sign">=</span> Выборка<span class="sign">.</span>Количество<span class="sign">,</span><br><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span>Выборка<span class="sign">.</span>СуммаОстаток<span class="sign">,</span> <br><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span>Выборка<span class="sign">.</span>СуммаОстаток / Выборка<span class="sign">.</span>КоличествоОстаток <span class="sign">*</span> Выборка<span class="sign">.</span>Количество<span class="sign">)</span><span class="sign">;</span><br><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span><span class="sign">&nbsp;</span>Движение<span class="sign">.</span>Сумма <span class="sign">=</span> СуммаСписания<span class="sign">;</span><br><span class="word">КонецЦикла</span><span class="sign">;</span><br>Движения<span class="sign">.</span>ОстаткиНоменклатуры<span class="sign">.</span>Записать<span class="sign">(</span><span class="sign">)</span><span class="sign">;</span><br></samp></div>
+<br>
+<br>
+<p>
+Обратите внимание, что при создании источника данных для установки блокировок по номенклатуре мы использовали результат запроса к табличной части. Казалось бы, в качестве источника данных можно было просто использовать табличную часть (<font color="#3366ff">ЭлементБлокировки.ИсточникДанных = СписокНоменклатуры</font>), но при этом мы бы заблокировали лишние данные, ведь нас интересует только та номенклатура из табличной части, которая не является услугой (<font color="#3366ff">РасходнаяНакладнаяСписокНоменклатуры.Номенклатура.Услуга = ЛОЖЬ)</font>. Этот момент как раз хорошо иллюстрирует тот факт, что к установке управляемых блокировок нужно относиться внимательно и не устанавливать «плохих» (избыточных) блокировок.
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+Теперь расмотрим подробнее вопрос необходимости установки именно исключительной управляемой блокировки.
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+<strong>Если бы мы не использовали никакой управляемой блокировки</strong>, то наш запрос, читающий данные, начал бы выполняться в любом случае. После его окончания (еще до окончания транзакции!) СУБД сняла бы блокировку с прочитанных данных. Это значит, что другая транзакция тут же могла бы эти данные изменить (таковы особенности блокировок на уровне изоляции Read Committed). Поэтому управляемая блокировка необходима для того, чтобы гарантировать, что прочитанные данные не будут изменены до окончания нашей транзакции.
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+Каким образом управляемая блокировка препятствует изменению данных? В результате выполнения метода <font color="#3366ff">Заблокировать()</font> в менеджере транзакционных блокировок появляются записи о тех данных, которые мы блокируем (естественно, если они не конфликтуют с существующими блокировками) (рис. 21).
+</p>
+<p align="center">
+<img src="./tran-isolation/ch03_021.PNG" alt="Рис. 3.21. Установка управляемых блокировок" title="Рис. 3.21. Установка управляемых блокировок" width="413" height="237">
+</p>
+<p align="center">
+&nbsp;
+</p>
+<p class="picnazv" align="center">
+<font color="#993366"><strong><span class="bold">Рис. 21.</span></strong></font> Установка управляемых
+блокировок
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+При любой попытке модификации данных информационной базы система автоматически будет пытаться установить исключительные управляемые блокировки для модифицируемых данных. Таким образом, если окажется, что другая транзакция пытается модифицировать те данные, которые мы уже заблокировали, менеджер транзакционных блокировок не даст ей установить нужные блокировки, т.к. исключительная блокировка, которую пытается установить другая транзакция, не совместима с нашей разделяемой блокировкой (рис. 22).
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<img src="./tran-isolation/ch03_022.PNG" alt="Рис. 3.22. Невозможно установить исключительную блокировку на номенклатуру 2" title="Рис. 3.22. Невозможно установить исключительную блокировку на номенклатуру 2" width="676" height="250">
+</p>
+<p align="center">
+&nbsp;
+</p>
+<p class="picnazv" align="center">
+<font color="#993366"><strong><span class="bold">Рис. 22.</span></strong></font> Невозможно установить
+исключительную блокировку на номенклатуру 2
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+Значит система не сможет изменить данные, заблокированные нами до тех пор, пока наша транзакция не закончится и наша блокировка не будет снята автоматически при завершении транзакции (рис. 23).
+</p>
+<p>
+&nbsp;
+</p>
+<p align="center">
+<img src="./tran-isolation/ch03_023.PNG" alt="Рис. 3.23. Исполнение кода продолжается после завершения нашей транзакции" title="Рис. 3.23. Исполнение кода продолжается после завершения нашей транзакции" width="632" height="288">
+</p>
+<p align="center">
+&nbsp;
+</p>
+<p class="picnazv" align="center">
+<font color="#993366"><strong><span class="bold">Рис. 23.</span></strong></font> Исполнение кода
+продолжается после завершения нашей транзакции
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+Если бы мы использовали <strong>только разделяемую управляемую блокировку</strong>, то мы могли бы получить конфликт блокировок (deadlock) с другой транзакцией.
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+Например, наша и другая транзакция начали читать остатки из регистра <font color="#3366ff">Остатки номенклатуры</font>. Списки номенклатуры, для которых читаются остатки в одной и другой транзакции, имеют одинаковые элементы. При этом система в нашей и в другой транзакции устанавливает разделяемую блокировку на читаемые данные. Две разделяемые блокировки на один и тот же ресурс («пересекающиеся» элементы номенклатуры) совместимы друг с другом (рис. 24).
+</p>
+<div align="center">
+<img src="./tran-isolation/ch03_024.PNG" alt="Рис. 3.24. Разделяемые блокировки совместимы друг с другом" title="Рис. 3.24. Разделяемые блокировки совместимы друг с другом" width="714" height="294">
+</div>
+<p align="center">
+&nbsp;
+</p>
+<p class="picnazv" align="center">
+<font color="#993366"><strong><span class="bold">Рис. 24.</span></strong></font> Разделяемые блокировки
+совместимы друг с другом
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+Затем мы закончили читать данные и хотим записать в этот регистр «новые остатки» для прочитанной номенклатуры. Мы не можем это сделать, т.к. для этого система должна установить исключительную блокировку на записываемые данные, но этому мешает разделяемая блокировка, установленная на часть этих данных другой транзакцией. Наша транзакция становится в очередь, ожидая снятия разделяемой блокировки, установленной другой транзакцией (рис. 25).&nbsp;
+</p>
+<p align="center">
+<img src="./tran-isolation/ch03_025.PNG" alt="Рис. 3.25. Наша транзакция не может установить исключительную блокировку на номенклатуру 2" title="Рис. 3.25. Наша транзакция не может установить исключительную блокировку на номенклатуру 2" width="714" height="377">
+</p>
+<p align="center">
+&nbsp;
+</p>
+<p class="picnazv" align="center">
+<font color="#993366"><strong><span class="bold">Рис. 25.</span></strong></font> Наша транзакция не может
+установить исключительную блокировку на номенклатуру 2
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+В это время другая транзакция также закончила чтение данных и хочет записать в этот регистр «новые остатки» для прочитанной номенклатуры. Она не может это сделать, т.к. для этого система должна установить исключительную блокировку на записываемые данные, но этому мешает разделяемая блокировка, установленная на часть этих данных нашей транзакцией. Другая транзакция становится в очередь, ожидая снятия разделяемой блокировки, установленной нашей транзакцией транзакцией (рис. 26).&nbsp;
+</p>
+<p align="center">
+<img src="./tran-isolation/ch03_026.PNG" alt="Рис. 3.26. Конфликт блокировок: другая транзакция также не может установить блокировку на номенклатуру 2" title="Рис. 3.26. Конфликт блокировок: другая транзакция также не может установить блокировку на номенклатуру 2" width="713" height="412">
+</p>
+<p align="center">
+<font color="#993366"><strong>Рис. 26.</strong></font> Конфликт блокировок: другая транзакция также не может установить блокировку на номенклатуру 2&nbsp;
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+В результате получается конфликт блокировок (deadlock), который может быть разрешен только принудительной отменой одной из транзакций.
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+Поэтому в данном случае необходима исключительная блокировка (рис. 27).
+</p>
+<div align="center">
+<img src="./tran-isolation/ch03_027.PNG" alt="Рис. 3.27. Установка исключительных блокировок" title="Рис. 3.27. Установка исключительных блокировок" width="439" height="176">
+</div>
+<p align="center">
+&nbsp;
+</p>
+<p class="picnazv" align="center">
+<font color="#993366"><strong><span class="bold">Рис. 27.</span></strong></font> Установка исключительных
+блокировок
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+В этом случае, когда другая транзакция, использующая управляемые блокировки, попытается начать чтение данных, которые мы заблокировали, она не сможет этого сделать. Менеджер тразакционных блокировок не даст ей установить никакую управляемую блокировку (ни разделяемую, ни исключительную) на наши данные, т.к. они не совместимы с нашей исключительной блокировкой (рис. 28).
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="center">
+<img src="./tran-isolation/ch03_028.PNG" alt="Рис. 3.28. Другая транзакция не может установить блокировку на номенклатуру 2" title="Рис. 3.28. Другая транзакция не может установить блокировку на номенклатуру 2" width="734" height="260">
+</p>
+<p align="center">
+&nbsp;
+</p>
+<p class="picnazv" align="center">
+<font color="#993366"><strong><span class="bold">Рис. 28.</span></strong></font> Другая транзакция не может
+установить блокировку на номенклатуру 2
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+В результате исполнение кода в другой транзакции будет остановлено и система будет ожидать снятия нашей исключительной блокировки. А наша транзакция сможет завершится, т.к. другая транзакция не имеет возможности заблокировать те записи, которые понадобятся нам для модификации (рис. 29).
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="center">
+<img src="./tran-isolation/ch03_029.PNG" alt="Рис. 3.29. Наша транзакция успешно завершается" title="Рис. 3.29. Наша транзакция успешно завершается" width="778" height="338">
+</p>
+<p align="center">
+&nbsp;
+</p>
+<p class="picnazv" align="center">
+<font color="#993366"><strong><span class="bold">Рис. 29.</span></strong></font> Наша транзакция успешно завершается
+</p>
+<p align="left">
+&nbsp;
+</p>
+<p align="left">
+&nbsp;
+</p>
+
+</div>
+
+<div class="bord">
+	<b>Дата создания:</b> 30.08.2007 13:22<br>
+</div>
+
+<script>formatMess();</script>
+
+
+
+
+
+
+
+	</td>
+</tr>
+</tbody></table>
+
+
+
+
+
+
+</body><style type="text/css">embed[type*="application/x-shockwave-flash"],embed[src*=".swf"],object[type*="application/x-shockwave-flash"],object[codetype*="application/x-shockwave-flash"],object[src*=".swf"],object[codebase*="swflash.cab"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid*="d27cdb6e-ae6d-11cf-96b8-444553540000"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"]{	display: none !important;}</style></html>

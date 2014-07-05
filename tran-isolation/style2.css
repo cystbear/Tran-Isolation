@@ -1,0 +1,164 @@
+ul.childList {
+	list-style: url('article.gif');
+	margin-top: 2px;
+	margin-bottom: 5px;
+}
+
+a.rubric {
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	color: #666666;
+	font-weight: bold;
+}
+
+a.rubric:hover {
+	color: #000000;
+	border-bottom: none;
+	text-decoration: underline;
+}
+
+a.article {
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+}
+
+
+a.article:hover {
+	border-bottom: none;
+	text-decoration: underline;
+}
+
+td.content {
+	font-family: Tahoma, Verdana, Arial, Helvetica;
+	font-size: 8pt;
+}
+
+.bord {
+	border: solid 1px #dcdcdc;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.bord p {
+	margin: 0;
+	padding: 0;
+}
+
+
+div.ftopA, div.ftop0 {
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	border: solid 1px #c0c0c0; 
+	background-color: #ffee66; 
+	padding: 8px; 
+	padding-top: 4px; 
+	padding-bottom: 4px; 
+	margin-top: 5px; 
+	line-height: 18px;
+}
+a.btn {
+	float: right;
+	display: block;
+	background-image: url("img/butn_bg.gif");
+	line-height: 18px;
+	text-decoration: none;
+	font-family: Verdana, Arial;
+	font-weight: normal;
+	font-size: 10px;
+	padding: 0 0 0 5px;
+	margin-right: 2px;
+	margin-top: 2px;
+	border-bottom: none;
+}
+a.btn span, a.btn nobr {
+	float: left;
+	display: block;
+	background: url("img/butn_end.gif") no-repeat right top;
+	padding: 0px 5px 0 0;
+	cursor: hand;
+	pointer: pointer;
+}
+a.btn:link, a.btn:visited {
+	color: black;
+	text-decoration: none;
+	border-bottom: none;
+	font-weight: normal;
+}
+a.btn:hover {
+/*	background-image: url("butn_bg_hover.gif");*/
+	color: red;
+	text-decoration: none;
+	border-bottom: none;
+	font-weight: normal;
+}
+a.btn:hover span, a.btn:hover nobr {
+/*	background: url("butn_end_hover.gif") no-repeat right top;*/
+}
+table.content, table.content td, table.content th {
+	border-color: #f2d262;
+	border-style: solid;
+}
+
+table.content {
+	border-left-width: 1px;
+	border-top-width: 1px;
+	border-right-width: 2px;
+	border-bottom-width: 2px;
+}
+
+table.content th {
+	background-color: #f6f2b9;
+	border-left-width: 1px;
+	border-top-width: 1px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+}
+
+table.content td {
+	border-left-width: 1px;
+	border-top-width: 1px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	font-size: 8pt;
+}
+
+tr.over {
+	background-color: #fafae8;
+}
+
+tr.out {
+	background-color: transparent;
+}
+
+td.em {
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	background-color: #faf6d8;
+	border-color: #f2d262;
+	border-style: solid;
+	border-left-width: 1px;
+	border-top-width: 1px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+}
+
+th.spec {
+	background-color: #f6f2b9;
+	border: 0px solid #f2d262;
+}
+
+td.spec {
+	border: 0px solid #f2d262;
+}
+
+table.spec {
+	border: 0px solid #f2d262;
+}
+.forms {
+	border-width: 1px;
+	border-color: #c0c0c0;
+	border-style: solid;
+}
+ul.childList li {
+  list-style-image: url("/img/book_close.gif");
+}

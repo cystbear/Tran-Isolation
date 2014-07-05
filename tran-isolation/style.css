@@ -1,0 +1,279 @@
+BODY {
+	margin: 0px;
+	BACKGROUND-COLOR: #ffffff;
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;	
+}
+
+P {
+	FONT-SIZE: 12px;
+	LINE-HEIGHT: normal;
+	TEXT-DECORATION: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+LI {
+	FONT-SIZE: 12px;
+	LINE-HEIGHT: normal;
+	TEXT-DECORATION: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+TD {
+	FONT-SIZE: 11px; LINE-HEIGHT: normal; TEXT-DECORATION: none
+	
+}
+H1 {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 16pt;
+	COLOR: #003399;
+	FONT-FAMILY: tahoma, arial, sans-serif;
+	line-height: 120%;
+	margin-top: 15px;
+}
+H2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14pt; COLOR: #a3611f; FONT-FAMILY: tahoma, arial, sans-serif
+}
+H3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12pt; COLOR: #003399; FONT-FAMILY: tahoma, arial, sans-serif
+}
+H4 {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 10pt;
+	COLOR: black;
+	FONT-FAMILY: tahoma, arial, sans-serif;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+.resume {
+	LIST-STYLE-IMAGE: url(/reslistimg.gif); MARGIN-BOTTOM: 10px
+}
+LI {
+	LIST-STYLE-IMAGE: url(/listimg.gif); MARGIN-BOTTOM: 3px
+}
+#sidebar {
+	Z-INDEX: 900; LEFT: -4px; WIDTH: 167px; POSITION: absolute; TOP: 70px
+}
+#content {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px
+}
+A {
+	FONT-WEIGHT: bold; COLOR: #c10000; TEXT-DECORATION: none
+}
+A:hover {
+	FONT-WEIGHT: bold; COLOR: #ff0000; TEXT-DECORATION: underline}
+A.image {
+	BORDER-BOTTOM: medium none
+}
+A.image:hover {
+	BORDER-BOTTOM: medium none
+}
+.sidemenu {
+	FONT-SIZE: 11px; COLOR: #745400
+}
+.hi {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; CURSOR: hand; COLOR: #ec4700; LINE-HEIGHT: 120%; FONT-FAMILY: tahoma, arial, sans-serif; BACKGROUND-COLOR: #ffe302
+}
+.hi2 {
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 11px; 
+	CURSOR: hand; 
+	COLOR: #745400; 
+	LINE-HEIGHT: 150%; 
+	FONT-FAMILY: tahoma, arial, sans-serif}
+.lo {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #745400; FONT-FAMILY: tahoma, arial, sans-serif
+}
+.BottomGray {
+	BORDER-TOP: #999999 1px; BORDER-BOTTOM: #999999 1px solid
+}
+.TopGray {
+	BORDER-TOP: #cccccc 1px solid
+}
+.BottomTopGray {
+	BORDER-TOP: #999999 1px solid; BORDER-BOTTOM: #999999 1px solid
+}
+.BottomLeftGrayCopy {
+	BORDER-TOP: #999999 1px; BORDER-LEFT: #999999 1px solid; BORDER-BOTTOM: #999999 1px solid
+}
+noborder {
+	FONT-WEIGHT: bold; COLOR: #c10000; BORDER-TOP-STYLE: none; BORDER-BOTTOM: #990000 1px; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; TEXT-DECORATION: none
+}
+.NoBorder {
+	BORDER-TOP: #999999 1px; BORDER-BOTTOM: #999999 1px; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none
+}
+a2 {
+	FONT-WEIGHT: bold; BORDER-BOTTOM: #cccccc 1px dotted; TEXT-DECORATION: none
+}
+.LeftGray {
+	BORDER-LEFT: #CFA501 1px solid}
+.BottomTopLeftGray {
+	BORDER-TOP: #999999 1px solid; BORDER-LEFT: #999999 1px solid; BORDER-BOTTOM: #999999 1px solid
+}
+INPUT.clsButton {
+	BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: bold; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 11px; BACKGROUND: #ffffcc; BORDER-BOTTOM-WIDTH: 0px; CURSOR: hand; COLOR: #993300; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none
+}
+SELECT.clsSelector {
+	BORDER-TOP-WIDTH: 1px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 11px; BACKGROUND: #ffffcc; BORDER-BOTTOM-WIDTH: 1px; CURSOR: hand; COLOR: #993300; BORDER-RIGHT-WIDTH: 1px; TEXT-DECORATION: none
+}
+TR.menuover {
+	BACKGROUND-COLOR: #ffe302
+}
+TR.menuout {
+	BACKGROUND-COLOR: transparent
+}
+TR.menucurrent {
+	BACKGROUND-COLOR: #ffd700
+}
+DIV.menu {
+	PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 11px; PADDING-BOTTOM: 3px; WIDTH: 100%; CURSOR: hand; PADDING-TOP: 2px; FONT-FAMILY: tahoma, arial, sans-serif
+}
+A.menu {
+	COLOR: #745400; BORDER-BOTTOM: medium none; TEXT-DECORATION: none
+}
+A.menu:hover {
+	COLOR: #ec4700; BORDER-BOTTOM: medium none; TEXT-DECORATION: none
+}
+.news {
+	font-size: 11px;
+	list-style-image: url(images/bullet_1.gif);
+}
+.news_small {
+	font-size: 9px;
+	list-style-image: url(images/bullet_1.gif);	
+}
+.subtitle {
+	font-size: 9px;
+	font-weight: bold;
+	color: #FFFFD6;
+}
+.news_small_ul {
+	list-style-image: url(images/bullet_1.gif);
+	font-size: 9px;
+	padding-left: 22px;
+	margin: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+.newsHeader {
+	font-size: 14px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #003399;
+	font-weight: bold;
+	line-height: 30px;
+}
+TR.menuleftover {
+	BACKGROUND-COLOR: #ffe302
+}
+TR.menuleftout {
+	BACKGROUND-COLOR: transparent
+}
+TR.menuleftcurrent {
+	BACKGROUND-COLOR: #ffd700
+}
+DIV.menuleft {
+	PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 11px; PADDING-BOTTOM: 3px; WIDTH: 100%; CURSOR: hand; PADDING-TOP: 2px; FONT-FAMILY: tahoma, arial, sans-serif
+}
+A.menuleft {
+	COLOR: #745400; BORDER-BOTTOM: medium none; TEXT-DECORATION: none
+}
+A.menuleft:hover {
+	COLOR: #ec4700; BORDER-BOTTOM: medium none; TEXT-DECORATION: none
+}
+table.remark {
+	border-style: solid;
+	background-color: #FFFFD6;
+	margin-left: 5px;
+	margin-bottom: 5px;
+	border: 1px;
+	border-top: solid 1px #CC9900;
+	border-right: solid 1px #CC9900;
+	border-bottom: solid 1px #CC9900;
+	border-left: solid 1px #CC9900;
+}
+
+A.rightmenu {
+	FONT-SIZE: 11px;
+	CURSOR: hand;
+	COLOR: #745400;
+	LINE-HEIGHT: 100%;
+	FONT-FAMILY: tahoma, arial, sans-serif;
+	text-decoration: none;
+	font-weight: bold;
+}
+A.rightmenu_small {
+	FONT-SIZE: 10px;
+	CURSOR: hand;
+	COLOR: #745400;
+	LINE-HEIGHT: 100%;
+	FONT-FAMILY: tahoma, arial, sans-serif;
+	text-decoration: none;
+	font-weight: bold;
+}
+.rightmenu_small {
+	FONT-SIZE: 10px;
+}
+
+A.rightmenu:hover {
+	COLOR: red;
+	text-decoration: none;
+}
+A.rightmenu_2 {
+
+	FONT-SIZE: 11px;
+	CURSOR: hand;
+	COLOR: black;
+	LINE-HEIGHT: 100%;
+	FONT-FAMILY: tahoma, arial, sans-serif;
+	text-decoration: none;
+	font-weight: normal;
+}
+A.rightmenu_2:hover {
+
+	COLOR: red;
+	text-decoration: none;
+	font-weight: normal;	
+}
+.book {
+	border-color:#745400;
+	margin-left: 5px;
+}
+
+.topper {
+	color: #745400;
+	font-size: 9px;
+}
+
+
+A.monitor {
+	COLOR: black;
+	text-decoration: underline;
+	font-weight: normal;
+}
+A.monitor:hover {
+	COLOR: red;
+	text-decoration: underline;
+	font-weight: normal;
+}
+
+PRE {
+	FONT-SIZE: 10pt; COLOR: #0000ff; FONT-FAMILY: Courier
+}
+.k {
+	COLOR: red
+}
+.c {
+	COLOR: green
+}
+.s {
+	COLOR: black
+}
+.n {
+	COLOR: black
+}
+.p {
+	COLOR: brown
+}

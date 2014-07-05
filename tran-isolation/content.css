@@ -1,0 +1,81 @@
+BODY {
+	margin: 10px;
+	BACKGROUND-COLOR: #ffffff;
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;	
+}
+H1 {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 16pt;
+	COLOR: #003399;
+	FONT-FAMILY: tahoma, arial, sans-serif;
+	line-height: 120%;
+	margin-top: 15px;
+}
+H2 {
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 14pt; 
+	COLOR: #a3611f; 
+	FONT-FAMILY: tahoma, arial, sans-serif;
+}
+H3 {
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 12pt; 
+	COLOR: #003399; 
+	FONT-FAMILY: tahoma, arial, sans-serif;
+}
+H4 {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 10pt;
+	COLOR: black;
+	FONT-FAMILY: tahoma, arial, sans-serif;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+LI {
+	LIST-STYLE-IMAGE: url('/listimg.gif'); 
+	MARGIN-BOTTOM: 3px;
+}
+A {
+	FONT-WEIGHT: bold; 
+	COLOR: #c10000; 
+	TEXT-DECORATION: none;
+}
+A:hover {
+	FONT-WEIGHT: bold; 
+	COLOR: #ff0000; 
+	TEXT-DECORATION: underline;
+}
+/*
+PRE {
+	FONT-SIZE: 10pt;
+	COLOR: #0000ff;
+	FONT-FAMILY: Courier;
+	overflow: auto;
+	background-color: #f5f5f5;
+	border: dashed 1px #dcdcdc;
+	padding-left: 5px;
+}
+*/
+samp, pre {
+	background-color: #f5f5f5;
+	color: #483d8b;
+	border: dashed 1px #dcdcdc;
+	padding-left: 5px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-family: Courier New, Courier;
+	font-size: 10pt;
+	display: block;
+	overflow: auto;
+/*	white-space: pre;*/
+}
+.word {color: #ff0000;}
+.sign {color: #ff0000;}
+.comment {color: #008000;}
+.digit {color: #000000;}
+.string {color: #000000;}
+p {
+	margin: 0;
+	padding: 0;
+}
